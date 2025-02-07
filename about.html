@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About – Spare Hands</title>
+  <title>Contact – Spare Hands</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -67,6 +67,25 @@
     .content h2 {
       color: #002E5D;
     }
+    .contact-info, .contact-form {
+      margin-top: 20px;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background: #00ADEF;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
     .footer {
       background: #002E5D;
       color: #FFFFFF;
@@ -99,10 +118,24 @@
   
   <div class="container">
     <div class="content">
-      <h2>About Spare Hands</h2>
-      <p>Welcome to Spare Hands – your comprehensive local service hub that connects you with trusted professionals for all your needs. Whether it's emergency repairs, home cleaning, fresh produce, or even finding that extra partner for a game of pool, we've got you covered.</p>
-      <p>Our mission is to simplify your life by making it effortless to find and hire reliable service providers and quality goods right in your neighborhood. Built on trust, quality, and a commitment to exceptional customer service, Spare Hands is here to revolutionize the way you get things done.</p>
-      <p>Join us on this journey and experience a platform that is as modern and user-friendly as it is dependable. Welcome to a new era of local services.</p>
+      <h2>Contact Us</h2>
+      <p>If you have any questions, feedback, or need support, feel free to get in touch with us.</p>
+      
+      <div class="contact-info">
+        <p><strong>Email:</strong> support@sparehands.com</p>
+        <p><strong>Phone:</strong> (555) 123-4567</p>
+        <p><strong>Address:</strong> 123 Main Street, Kitchener, ON</p>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
   
