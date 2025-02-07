@@ -6,6 +6,7 @@
   <title>Search Results – Spare Hands</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Global Styles */
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
@@ -25,17 +26,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
     }
     header img {
-      height: 40px;
+      height: 60px; /* Increased logo size */
     }
     nav {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
     }
     nav a {
       color: #FFFFFF;
@@ -69,8 +72,9 @@
       text-align: center;
     }
     .search-header h2 {
-      color: #002E5D;
+      color: #002E5D; /* Navy title */
     }
+    /* Each search section gets its own ID */
     .section {
       margin-bottom: 60px;
       display: block;
@@ -80,12 +84,18 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+    /* Wrap entire profile card in a clickable anchor */
+    .profile-link {
+      display: block;
+      text-decoration: none;
+    }
     .profile-card {
       background: #FFFFFF;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       padding: 15px;
       transition: transform 0.2s ease;
+      border-bottom: 3px solid #002E5D; /* subtle navy border accent */
     }
     .profile-card:hover {
       transform: translateY(-5px);
@@ -120,7 +130,7 @@
 </head>
 <body>
   <header>
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
       <a href="index.html">
         <img src="images/logo.png" alt="Spare Hands Logo">
       </a>
@@ -136,71 +146,87 @@
   </header>
   
   <div class="container">
-    <!-- Section: Cleaning -->
+    <!-- Section: Cleaning (I need help cleaning dog shit) -->
     <div class="section" id="cleaning-dog-shit">
       <div class="search-header">
         <h2>Results for “cleaning dog shit”</h2>
         <p>Showing service providers near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
-          <h3><a href="profile.html?id=1">Dirty Deeds Cleaning</a></h3>
-          <p><strong>Service:</strong> Home &amp; Commercial Cleaning</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/cleaning-2.png" alt="Sparkle &amp; Shine Cleaners">
-          <h3><a href="profile.html?id=2">Sparkle &amp; Shine Cleaners</a></h3>
-          <p><strong>Service:</strong> Deep Cleaning</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/cleaning-3.png" alt="Grime Busters">
-          <h3><a href="profile.html?id=3">Grime Busters</a></h3>
-          <p><strong>Service:</strong> Emergency Cleanup</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/cleaning-4.png" alt="Pristine Clean Crew">
-          <h3><a href="profile.html?id=4">Pristine Clean Crew</a></h3>
-          <p><strong>Service:</strong> Residential &amp; Commercial Cleaning</p>
-          <p><strong>Rating:</strong> ★★★☆☆</p>
-        </div>
+        <a href="dirtydeeds-cleaning.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
+            <h3>Dirty Deeds Cleaning</h3>
+            <p><strong>Service:</strong> Home &amp; Commercial Cleaning</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="sparkle-shine-cleaners.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/cleaning-2.png" alt="Sparkle &amp; Shine Cleaners">
+            <h3>Sparkle &amp; Shine Cleaners</h3>
+            <p><strong>Service:</strong> Deep Cleaning</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
+        <a href="grime-busters.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/cleaning-3.png" alt="Grime Busters">
+            <h3>Grime Busters</h3>
+            <p><strong>Service:</strong> Emergency Cleanup</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="pristine-clean-crew.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/cleaning-4.png" alt="Pristine Clean Crew">
+            <h3>Pristine Clean Crew</h3>
+            <p><strong>Service:</strong> Residential &amp; Commercial Cleaning</p>
+            <p><strong>Rating:</strong> ★★★☆☆</p>
+          </div>
+        </a>
       </div>
     </div>
     
-    <!-- Section: Blueberries -->
+    <!-- Section: Blueberries (Buy blueberries) -->
     <div class="section" id="buy-blueberries">
       <div class="search-header">
         <h2>Results for “buy blueberries”</h2>
         <p>Showing local suppliers near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/blueberries-1.png" alt="Blueberry Bliss Farm">
-          <h3><a href="profile.html?id=5">Blueberry Bliss Farm</a></h3>
-          <p><strong>Service:</strong> Fresh Blueberries</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/blueberries-2.png" alt="Berry Best Produce">
-          <h3><a href="profile.html?id=6">Berry Best Produce</a></h3>
-          <p><strong>Service:</strong> Local Fruit Supplier</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/blueberries-3.png" alt="The Blueberry Basket">
-          <h3><a href="profile.html?id=7">The Blueberry Basket</a></h3>
-          <p><strong>Service:</strong> Farm Fresh Produce</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/blueberries-4.png" alt="Blue Haven Farms">
-          <h3><a href="profile.html?id=8">Blue Haven Farms</a></h3>
-          <p><strong>Service:</strong> Organic Blueberries</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
+        <a href="blueberry-bliss-farm.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/blueberries-1.png" alt="Blueberry Bliss Farm">
+            <h3>Blueberry Bliss Farm</h3>
+            <p><strong>Service:</strong> Fresh Blueberries</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
+        <a href="berry-best-produce.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/blueberries-2.png" alt="Berry Best Produce">
+            <h3>Berry Best Produce</h3>
+            <p><strong>Service:</strong> Local Fruit Supplier</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="the-blueberry-basket.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/blueberries-3.png" alt="The Blueberry Basket">
+            <h3>The Blueberry Basket</h3>
+            <p><strong>Service:</strong> Farm Fresh Produce</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="blue-haven-farms.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/blueberries-4.png" alt="Blue Haven Farms">
+            <h3>Blue Haven Farms</h3>
+            <p><strong>Service:</strong> Organic Blueberries</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
       </div>
     </div>
     
@@ -211,46 +237,56 @@
         <p>Showing repair services near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/emergency-1.png" alt="Rapid Repair Co.">
-          <h3><a href="profile.html?id=9">Rapid Repair Co.</a></h3>
-          <p><strong>Service:</strong> Emergency Home Repairs</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/emergency-2.png" alt="Fix-It Fast">
-          <h3><a href="profile.html?id=10">Fix-It Fast</a></h3>
-          <p><strong>Service:</strong> On-Demand Repairs</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/emergency-3.png" alt="Rescue Repairs">
-          <h3><a href="profile.html?id=11">Rescue Repairs</a></h3>
-          <p><strong>Service:</strong> 24/7 Repair Services</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
+        <a href="rapid-repair-co.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/emergency-1.png" alt="Rapid Repair Co.">
+            <h3>Rapid Repair Co.</h3>
+            <p><strong>Service:</strong> Emergency Home Repairs</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
+        <a href="fix-it-fast.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/emergency-2.png" alt="Fix-It Fast">
+            <h3>Fix-It Fast</h3>
+            <p><strong>Service:</strong> On-Demand Repairs</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="rescue-repairs.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/emergency-3.png" alt="Rescue Repairs">
+            <h3>Rescue Repairs</h3>
+            <p><strong>Service:</strong> 24/7 Repair Services</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
       </div>
     </div>
     
-    <!-- Section: Jump Start -->
+    <!-- Section: Jump Start Car -->
     <div class="section" id="jump-start-car">
       <div class="search-header">
         <h2>Results for “jump start car”</h2>
         <p>Showing roadside assistance near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/jumpstart-1.png" alt="JumpStart Pros">
-          <h3><a href="profile.html?id=12">JumpStart Pros</a></h3>
-          <p><strong>Service:</strong> Car Jump Starts</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/jumpstart-2.png" alt="Roadside Rescuers">
-          <h3><a href="profile.html?id=13">Roadside Rescuers</a></h3>
-          <p><strong>Service:</strong> Emergency Roadside Assistance</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
+        <a href="jumpstart-pros.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/jumpstart-1.png" alt="JumpStart Pros">
+            <h3>JumpStart Pros</h3>
+            <p><strong>Service:</strong> Car Jump Starts</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
+        <a href="roadside-rescuers.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/jumpstart-2.png" alt="Roadside Rescuers">
+            <h3>Roadside Rescuers</h3>
+            <p><strong>Service:</strong> Emergency Roadside Assistance</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
       </div>
     </div>
     
@@ -261,18 +297,22 @@
         <p>Showing travel services near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/travelagent-1.png" alt="GlobeTrotter Travel">
-          <h3><a href="profile.html?id=14">GlobeTrotter Travel</a></h3>
-          <p><strong>Service:</strong> Travel Planning &amp; Booking</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/travelagent-2.png" alt="Voyage Ventures">
-          <h3><a href="profile.html?id=15">Voyage Ventures</a></h3>
-          <p><strong>Service:</strong> Customized Itineraries</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
+        <a href="globetrotter-travel.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/travelagent-1.png" alt="GlobeTrotter Travel">
+            <h3>GlobeTrotter Travel</h3>
+            <p><strong>Service:</strong> Travel Planning &amp; Booking</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
+        <a href="voyage-ventures.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/travelagent-2.png" alt="Voyage Ventures">
+            <h3>Voyage Ventures</h3>
+            <p><strong>Service:</strong> Customized Itineraries</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
       </div>
     </div>
     
@@ -283,18 +323,22 @@
         <p>Showing legal consultants near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/legal-1.png" alt="LawWise Consulting">
-          <h3><a href="profile.html?id=16">LawWise Consulting</a></h3>
-          <p><strong>Service:</strong> Legal Advice &amp; Consultation</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/legal-2.png" alt="Justice Junction">
-          <h3><a href="profile.html?id=17">Justice Junction</a></h3>
-          <p><strong>Service:</strong> On-Demand Legal Support</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
+        <a href="lawwise-consulting.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/legal-1.png" alt="LawWise Consulting">
+            <h3>LawWise Consulting</h3>
+            <p><strong>Service:</strong> Legal Advice &amp; Consultation</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
+        <a href="justice-junction.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/legal-2.png" alt="Justice Junction">
+            <h3>Justice Junction</h3>
+            <p><strong>Service:</strong> On-Demand Legal Support</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
       </div>
     </div>
     
@@ -305,24 +349,30 @@
         <p>Showing local listings for couches near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/couches-1.png" alt="Comfy Living">
-          <h3><a href="profile.html?id=18">Comfy Living</a></h3>
-          <p><strong>Service:</strong> Pre-owned Couches</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/couches-2.png" alt="Sofa Central">
-          <h3><a href="profile.html?id=19">Sofa Central</a></h3>
-          <p><strong>Service:</strong> Couch Sales &amp; Delivery</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/couches-3.png" alt="Luxe Loungers">
-          <h3><a href="profile.html?id=20">Luxe Loungers</a></h3>
-          <p><strong>Service:</strong> Designer Couches</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
+        <a href="comfy-living.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/couches-1.png" alt="Comfy Living">
+            <h3>Comfy Living</h3>
+            <p><strong>Service:</strong> Pre-owned Couches</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="sofa-central.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/couches-2.png" alt="Sofa Central">
+            <h3>Sofa Central</h3>
+            <p><strong>Service:</strong> Couch Sales &amp; Delivery</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="luxe-loungers.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/couches-3.png" alt="Luxe Loungers">
+            <h3>Luxe Loungers</h3>
+            <p><strong>Service:</strong> Designer Couches</p>
+            <p><strong>Rating:</strong> ★★★★★</p>
+          </div>
+        </a>
       </div>
     </div>
     
@@ -333,18 +383,22 @@
         <p>Showing local game partner listings near Kitchener</p>
       </div>
       <div class="profile-grid">
-        <div class="profile-card">
-          <img src="images/pool-1.png" alt="Pool Pals">
-          <h3><a href="profile.html?id=21">Pool Pals</a></h3>
-          <p><strong>Service:</strong> Game Partner Matching</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-        <div class="profile-card">
-          <img src="images/pool-2.png" alt="Cue Crew">
-          <h3><a href="profile.html?id=22">Cue Crew</a></h3>
-          <p><strong>Service:</strong> Pool &amp; Billiards Meetups</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
+        <a href="pool-pals.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/pool-1.png" alt="Pool Pals">
+            <h3>Pool Pals</h3>
+            <p><strong>Service:</strong> Game Partner Matching</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
+        <a href="cue-crew.html" class="profile-link">
+          <div class="profile-card">
+            <img src="images/pool-2.png" alt="Cue Crew">
+            <h3>Cue Crew</h3>
+            <p><strong>Service:</strong> Pool &amp; Billiards Meetups</p>
+            <p><strong>Rating:</strong> ★★★★☆</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
