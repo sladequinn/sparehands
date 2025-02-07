@@ -4,28 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search Results – Spare Hands</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reuse styles from index.html */
-    body { font-family: "Helvetica Neue", Arial, sans-serif; margin: 0; background: #f5f5f5; color: #333; }
-    a { color: #007BFF; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { max-width: 1200px; margin: auto; padding: 20px; }
-    header { background: #fff; padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-    header h1 { margin: 0; font-size: 28px; }
-    nav { margin-top: 10px; }
-    nav a { margin-right: 15px; font-size: 16px; }
-    .search-header { margin: 40px 0; text-align: center; }
-    .results { margin-top: 20px; }
-    .profile {
-      background: #fff;
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background: #F5F5F5;
+      color: #333;
+    }
+    a {
+      color: #00ADEF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
       padding: 20px;
-      margin-bottom: 15px;
+    }
+    header {
+      background: #FFFFFF;
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #002E5D;
+    }
+    nav a {
+      margin-right: 15px;
+      font-size: 16px;
+      color: #002E5D;
+    }
+    .search-header {
+      margin: 40px 0;
+      text-align: center;
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .profile-card {
+      background: #FFFFFF;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.2s ease;
     }
-    .profile h3 { margin-top: 0; }
-    .profile p { margin: 5px 0; }
-    .footer { background: #fff; padding: 20px; text-align: center; font-size: 14px; color: #888; margin-top: 40px; }
+    .profile-card:hover {
+      transform: translateY(-5px);
+    }
+    .profile-card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .profile-card h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #002E5D;
+    }
+    .profile-card p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #4A4A4A;
+    }
+    .footer {
+      background: #FFFFFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #4A4A4A;
+      margin-top: 40px;
+    }
     @media (max-width: 600px) {
       nav a { display: block; margin: 5px 0; }
     }
@@ -45,38 +107,94 @@
   </header>
 
   <div class="container">
+    <!-- Simulated Search Query: "cleaning dog shit" -->
     <div class="search-header">
-      <!-- Simulated search query display -->
       <h2>Results for “<em>cleaning dog shit</em>”</h2>
       <p>Showing service providers near Kitchener</p>
     </div>
 
-    <div class="results">
-      <!-- Example Profile 1 -->
-      <div class="profile">
+    <!-- Profile Grid for "cleaning dog shit" -->
+    <div class="profile-grid">
+      <!-- Profile 1 -->
+      <div class="profile-card">
+        <img src="images/cleaning-1.jpg" alt="Dirty Deeds Cleaning">
         <h3><a href="profile.html?id=1">Dirty Deeds Cleaning</a></h3>
-        <p><strong>Service:</strong> Home & Commercial Cleaning</p>
+        <p><strong>Service:</strong> Home &amp; Commercial Cleaning</p>
         <p><strong>Location:</strong> Kitchener, ON</p>
         <p><strong>Rating:</strong> ★★★★☆</p>
-        <p>Expert cleaning for those messy situations. "No mess is too gross!"</p>
+        <p>"No mess is too gross!"</p>
       </div>
-      
-      <!-- Example Profile 2 -->
-      <div class="profile">
-        <h3><a href="profile.html?id=2">Spotless Solutions</a></h3>
-        <p><strong>Service:</strong> Emergency Cleanup & Repairs</p>
+      <!-- Profile 2 -->
+      <div class="profile-card">
+        <img src="images/cleaning-2.jpg" alt="Sparkle &amp; Shine Cleaners">
+        <h3><a href="profile.html?id=2">Sparkle &amp; Shine Cleaners</a></h3>
+        <p><strong>Service:</strong> Deep Cleaning</p>
         <p><strong>Location:</strong> Kitchener, ON</p>
         <p><strong>Rating:</strong> ★★★★★</p>
-        <p>Rapid response for life's unexpected disasters. 24/7 service available.</p>
+        <p>"We make your home sparkle!"</p>
       </div>
-      
-      <!-- Example Profile 3 -->
-      <div class="profile">
-        <h3><a href="profile.html?id=3">Mucky Movers</a></h3>
-        <p><strong>Service:</strong> General Labor & Cleanup</p>
+      <!-- Profile 3 -->
+      <div class="profile-card">
+        <img src="images/cleaning-3.jpg" alt="Grime Busters">
+        <h3><a href="profile.html?id=3">Grime Busters</a></h3>
+        <p><strong>Service:</strong> Emergency Cleanup</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★☆</p>
+        <p>"Fast response, even when it’s ugly."</p>
+      </div>
+      <!-- Profile 4 -->
+      <div class="profile-card">
+        <img src="images/cleaning-4.jpg" alt="Pristine Clean Crew">
+        <h3><a href="profile.html?id=4">Pristine Clean Crew</a></h3>
+        <p><strong>Service:</strong> Residential &amp; Commercial Cleaning</p>
         <p><strong>Location:</strong> Kitchener, ON</p>
         <p><strong>Rating:</strong> ★★★☆☆</p>
-        <p>Not just cleaning—moving, hauling, and everything in between.</p>
+        <p>"Reliable, every time."</p>
+      </div>
+    </div>
+
+    <!-- Simulated Search Query: "buy blueberries" -->
+    <div class="search-header">
+      <h2>Results for “<em>buy blueberries</em>”</h2>
+      <p>Showing local suppliers near Kitchener</p>
+    </div>
+    <!-- Profile Grid for "buy blueberries" -->
+    <div class="profile-grid">
+      <!-- Profile 5 -->
+      <div class="profile-card">
+        <img src="images/blueberries-1.jpg" alt="Blueberry Bliss Farm">
+        <h3><a href="profile.html?id=5">Blueberry Bliss Farm</a></h3>
+        <p><strong>Service:</strong> Fresh Blueberries</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★★</p>
+        <p>"Naturally sweet and organic."</p>
+      </div>
+      <!-- Profile 6 -->
+      <div class="profile-card">
+        <img src="images/blueberries-2.jpg" alt="Berry Best Produce">
+        <h3><a href="profile.html?id=6">Berry Best Produce</a></h3>
+        <p><strong>Service:</strong> Local Fruit Supplier</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★☆</p>
+        <p>"Handpicked blueberries daily."</p>
+      </div>
+      <!-- Profile 7 -->
+      <div class="profile-card">
+        <img src="images/blueberries-3.jpg" alt="The Blueberry Basket">
+        <h3><a href="profile.html?id=7">The Blueberry Basket</a></h3>
+        <p><strong>Service:</strong> Farm Fresh Produce</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★☆</p>
+        <p>"Taste the difference."</p>
+      </div>
+      <!-- Profile 8 -->
+      <div class="profile-card">
+        <img src="images/blueberries-4.jpg" alt="Blue Haven Farms">
+        <h3><a href="profile.html?id=8">Blue Haven Farms</a></h3>
+        <p><strong>Service:</strong> Organic Blueberries</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★☆</p>
+        <p>"From our farm to your table."</p>
       </div>
     </div>
   </div>
