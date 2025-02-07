@@ -12,6 +12,14 @@
       background: #F5F5F5;
       color: #333;
     }
+    /* Remove link underlines throughout this page */
+    a {
+      color: #00ADEF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -67,8 +75,10 @@
     .search-header h2 {
       color: #002E5D;
     }
+    /* Each search section gets its own ID */
     .section {
       margin-bottom: 60px;
+      display: block;
     }
     .profile-grid {
       display: grid;
@@ -130,7 +140,7 @@
   
   <div class="container">
     <!-- Section: Cleaning -->
-    <div class="section">
+    <div class="section" id="cleaning-dog-shit">
       <div class="search-header">
         <h2>Results for “cleaning dog shit”</h2>
         <p>Showing service providers near Kitchener</p>
@@ -164,7 +174,7 @@
     </div>
     
     <!-- Section: Blueberries -->
-    <div class="section">
+    <div class="section" id="buy-blueberries">
       <div class="search-header">
         <h2>Results for “buy blueberries”</h2>
         <p>Showing local suppliers near Kitchener</p>
@@ -198,7 +208,7 @@
     </div>
     
     <!-- Section: Emergency Repairs -->
-    <div class="section">
+    <div class="section" id="emergency-repairs">
       <div class="search-header">
         <h2>Results for “emergency repairs”</h2>
         <p>Showing repair services near Kitchener</p>
@@ -226,7 +236,7 @@
     </div>
     
     <!-- Section: Jump Start -->
-    <div class="section">
+    <div class="section" id="jump-start-car">
       <div class="search-header">
         <h2>Results for “jump start car”</h2>
         <p>Showing roadside assistance near Kitchener</p>
@@ -248,7 +258,7 @@
     </div>
     
     <!-- Section: Travel Agent -->
-    <div class="section">
+    <div class="section" id="travel-agent">
       <div class="search-header">
         <h2>Results for “travel agent”</h2>
         <p>Showing travel services near Kitchener</p>
@@ -270,7 +280,7 @@
     </div>
     
     <!-- Section: Legal Advice -->
-    <div class="section">
+    <div class="section" id="legal-advice">
       <div class="search-header">
         <h2>Results for “legal advice”</h2>
         <p>Showing legal consultants near Kitchener</p>
@@ -292,7 +302,7 @@
     </div>
     
     <!-- Section: Couches for Sale -->
-    <div class="section">
+    <div class="section" id="couches-for-sale">
       <div class="search-header">
         <h2>Results for “couches for sale”</h2>
         <p>Showing local listings for couches near Kitchener</p>
@@ -320,7 +330,7 @@
     </div>
     
     <!-- Section: Pool Partner -->
-    <div class="section">
+    <div class="section" id="pool-fourth">
       <div class="search-header">
         <h2>Results for “need a fourth for a game of pool”</h2>
         <p>Showing local game partner listings near Kitchener</p>
@@ -345,5 +355,47 @@
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
+  
+  <script>
+    // Helper: Get query parameter by name
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    
+    // Get the "q" parameter from URL
+    var query = getParameterByName('q');
+    if (query) {
+      // Define mapping between query text and section IDs
+      var mapping = {
+        'cleaning dog shit': 'cleaning-dog-shit',
+        'buy blueberries': 'buy-blueberries',
+        'emergency repairs': 'emergency-repairs',
+        'jump start car': 'jump-start-car',
+        'travel agent': 'travel-agent',
+        'legal advice': 'legal-advice',
+        'couches for sale': 'couches-for-sale',
+        'need a fourth for a game of pool': 'pool-fourth'
+      };
+      // Hide all sections initially
+      var sections = document.querySelectorAll('.section');
+      sections.forEach(function(sec) {
+        sec.style.display = 'none';
+      });
+      // Show only the matching section (if found)
+      var idToShow = mapping[query.toLowerCase()];
+      if (idToShow) {
+        var sectionToShow = document.getElementById(idToShow);
+        if (sectionToShow) {
+          sectionToShow.style.display = 'block';
+        }
+      }
+    }
+  </script>
 </body>
 </html>
