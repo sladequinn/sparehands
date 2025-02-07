@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Results – Spare Hands</title>
+  <style>
+    /* Reuse styles from index.html */
+    body { font-family: "Helvetica Neue", Arial, sans-serif; margin: 0; background: #f5f5f5; color: #333; }
+    a { color: #007BFF; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    header { background: #fff; padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    header h1 { margin: 0; font-size: 28px; }
+    nav { margin-top: 10px; }
+    nav a { margin-right: 15px; font-size: 16px; }
+    .search-header { margin: 40px 0; text-align: center; }
+    .results { margin-top: 20px; }
+    .profile {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .profile h3 { margin-top: 0; }
+    .profile p { margin: 5px 0; }
+    .footer { background: #fff; padding: 20px; text-align: center; font-size: 14px; color: #888; margin-top: 40px; }
+    @media (max-width: 600px) {
+      nav a { display: block; margin: 5px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Spare Hands</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="search-header">
+      <!-- Simulated search query display -->
+      <h2>Results for “<em>cleaning dog shit</em>”</h2>
+      <p>Showing service providers near Kitchener</p>
+    </div>
+
+    <div class="results">
+      <!-- Example Profile 1 -->
+      <div class="profile">
+        <h3><a href="profile.html?id=1">Dirty Deeds Cleaning</a></h3>
+        <p><strong>Service:</strong> Home & Commercial Cleaning</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★☆</p>
+        <p>Expert cleaning for those messy situations. "No mess is too gross!"</p>
+      </div>
+      
+      <!-- Example Profile 2 -->
+      <div class="profile">
+        <h3><a href="profile.html?id=2">Spotless Solutions</a></h3>
+        <p><strong>Service:</strong> Emergency Cleanup & Repairs</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★★★</p>
+        <p>Rapid response for life's unexpected disasters. 24/7 service available.</p>
+      </div>
+      
+      <!-- Example Profile 3 -->
+      <div class="profile">
+        <h3><a href="profile.html?id=3">Mucky Movers</a></h3>
+        <p><strong>Service:</strong> General Labor & Cleanup</p>
+        <p><strong>Location:</strong> Kitchener, ON</p>
+        <p><strong>Rating:</strong> ★★★☆☆</p>
+        <p>Not just cleaning—moving, hauling, and everything in between.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Spare Hands. All Rights Reserved.
+  </div>
+</body>
+</html>
