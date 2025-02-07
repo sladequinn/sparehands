@@ -12,46 +12,44 @@
       background: #F5F5F5;
       color: #333;
     }
-    a {
-      color: #00ADEF;
-      text-decoration: none;
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    a:hover {
-      text-decoration: underline;
+    header h1 {
+      color: #FFFFFF;
+      margin: 0;
+      font-size: 28px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: #FFFFFF;
+      margin-right: 20px;
+      font-size: 16px;
+      text-decoration: none;
     }
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 20px;
     }
-    header {
-      background: #FFFFFF;
-      padding: 15px 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-      color: #002E5D;
-    }
-    nav a {
-      margin-right: 15px;
-      font-size: 16px;
-      color: #002E5D;
-    }
     .profile-header {
       background: #FFFFFF;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 5px;
+      padding: 30px;
+      border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       text-align: center;
+      margin-top: 40px;
     }
     .profile-header img {
       width: 150px;
@@ -60,20 +58,20 @@
       margin-bottom: 15px;
     }
     .profile-header h2 {
+      color: #002E5D;
       margin: 10px 0 5px;
       font-size: 24px;
-      color: #002E5D;
     }
     .profile-details {
       background: #FFFFFF;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 5px;
+      padding: 30px;
+      border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-top: 20px;
     }
     .profile-details h3 {
-      margin-top: 0;
       color: #002E5D;
+      margin-top: 0;
     }
     .profile-details p, .profile-details ul {
       font-size: 14px;
@@ -84,21 +82,21 @@
       list-style: disc inside;
     }
     .footer {
-      background: #FFFFFF;
+      background: #002E5D;
+      color: #FFFFFF;
       padding: 20px;
       text-align: center;
       font-size: 14px;
-      color: #4A4A4A;
       margin-top: 40px;
     }
     @media (max-width: 600px) {
-      nav a { display: block; margin: 5px 0; }
+      nav a { margin-right: 10px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
       <h1>Spare Hands</h1>
       <nav>
         <a href="index.html">Home</a>
@@ -108,7 +106,7 @@
       </nav>
     </div>
   </header>
-
+  
   <div class="container">
     <div class="profile-header">
       <img src="images/cleaning-1.jpg" alt="Dirty Deeds Cleaning">
@@ -135,7 +133,7 @@
       <p>Email: info@dirtydeedscleaning.ca</p>
     </div>
   </div>
-
+  
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
