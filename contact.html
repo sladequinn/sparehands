@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact – Spare Hands</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background: #F5F5F5;
+      color: #333;
+    }
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 {
+      color: #FFFFFF;
+      margin: 0;
+      font-size: 28px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: #FFFFFF;
+      margin-right: 20px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .btn {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-login {
+      background: transparent;
+      color: #FFFFFF;
+      border: 1px solid #FFFFFF;
+    }
+    .btn-signup {
+      background: #00ADEF;
+      color: #FFFFFF;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .content {
+      background: #FFFFFF;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-top: 40px;
+    }
+    .content h2 {
+      color: #002E5D;
+    }
+    .contact-info, .contact-form {
+      margin-top: 20px;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background: #00ADEF;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .footer {
+      background: #002E5D;
+      color: #FFFFFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    @media (max-width: 600px) {
+      nav a { margin-right: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <h1>Spare Hands</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn btn-login">Login</a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="content">
+      <h2>Contact Us</h2>
+      <p>If you have any questions, feedback, or need support, feel free to get in touch with us.</p>
+      
+      <div class="contact-info">
+        <p><strong>Email:</strong> support@sparehands.com</p>
+        <p><strong>Phone:</strong> (555) 123-4567</p>
+        <p><strong>Address:</strong> 123 Main Street, Kitchener, ON</p>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    &copy; 2025 Spare Hands. All Rights Reserved.
+  </div>
+</body>
+</html>
