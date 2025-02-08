@@ -6,7 +6,6 @@
   <title>Profile – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Header styles (same as above) are repeated */
     .container { max-width: 1200px; margin: auto; padding: 20px; }
     .profile-header {
       background: #FFF;
@@ -14,10 +13,14 @@
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       text-align: center;
-      margin-top: 40px;
-      margin-bottom: 40px;
+      margin: 40px auto 40px;
     }
-    .profile-header img { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 15px; }
+    .profile-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
     .profile-header h2 { color: #002E5D; margin: 10px 0 5px; font-size: 24px; }
     .profile-details {
       background: #FFF;
@@ -25,17 +28,20 @@
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       margin-bottom: 60px;
+      text-align: left;
     }
     .profile-details h3 { color: #002E5D; margin-top: 0; }
-    .profile-details p,
-    .profile-details ul { font-size: 14px; color: #4A4A4A; line-height: 1.6; }
+    .profile-details p, .profile-details ul {
+      font-size: 14px;
+      color: #4A4A4A;
+      line-height: 1.6;
+    }
     .profile-details ul { list-style: disc inside; }
     .message-form {
       margin-top: 30px;
       text-align: left;
     }
-    .message-form input,
-    .message-form textarea {
+    .message-form input, .message-form textarea {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
