@@ -6,7 +6,7 @@
   <title>Services – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Page-specific styles for services page */
+    /* Common header styles are assumed (see index.html) */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -82,11 +82,48 @@
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
       toggle.addEventListener("click", function() {
-        if (dropdown.style.display === "flex") {
-          dropdown.style.display = "none";
-        } else {
-          dropdown.style.display = "flex";
+        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+      });
+      
+      // Service providers data for services page
+      var serviceProviders = [
+        { id: "1", image: "images/cleaning-1.png", title: "Dirty Deeds Cleaning", service: "Cleaning", rating: 4 },
+        { id: "2", image: "images/cleaning-2.png", title: "Sparkle & Shine Cleaners", service: "Cleaning", rating: 5 },
+        { id: "9", image: "images/emergency-1.png", title: "Rapid Repair Co.", service: "Repairs", rating: 5 },
+        { id: "14", image: "images/travelagent-1.png", title: "GlobeTrotter Travel", service: "Travel", rating: 5 },
+        { id: "16", image: "images/legal-1.png", title: "LawWise Consulting", service: "Legal", rating: 5 },
+        { id: "23", image: "images/flowers-1.png", title: "Floral Finesse", service: "Flowers", rating: 5 }
+      ];
+      
+      function renderProviders(providers) {
+        var container = document.querySelector(".profile-grid");
+        var html = "";
+        providers.forEach(function(provider) {
+          html += '<a href="profile.html?id=' + provider.id + '" class="profile-link">';
+          html += '<div class="profile-card">';
+          html += '<img src="' + provider.image + '" alt="' + provider.title + '">';
+          html += '<h3>' + provider.title + '</h3>';
+          html += '<p><strong>Service:</strong> ' + provider.service + '</p>';
+          html += '<p><strong>Rating:</strong> ' + "★".repeat(provider.rating) + "☆".repeat(5 - provider.rating) + '</p>';
+          html += '</div></a>';
+        });
+        container.innerHTML = html;
+      }
+      
+      // Initial render
+      renderProviders(serviceProviders);
+      
+      // Sort functionality
+      document.getElementById("sort").addEventListener("change", function() {
+        var sortValue = this.value;
+        var sorted = serviceProviders.slice();
+        if(sortValue === "ratings") {
+          sorted.sort(function(a, b) { return b.rating - a.rating; });
+        } else if(sortValue === "nearest") {
+          // For demo, we assume default order is 'nearest'
+          sorted = serviceProviders;
         }
+        renderProviders(sorted);
       });
     });
   </script>
@@ -108,7 +145,6 @@
         </div>
       </div>
     </div>
-    <!-- Dropdown overlay menu -->
     <nav class="dropdown-menu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -131,66 +167,12 @@
       </select>
     </div>
     <div class="profile-grid">
-      <!-- List of service providers -->
-      <a href="profile.html?id=1" class="profile-link">
-        <div class="profile-card">
-          <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
-          <h3>Dirty Deeds Cleaning</h3>
-          <p><strong>Service:</strong> Cleaning</p>
-          <p><strong>Rating:</strong> ★★★★☆</p>
-        </div>
-      </a>
-      <a href="profile.html?id=2" class="profile-link">
-        <div class="profile-card">
-          <img src="images/cleaning-2.png" alt="Sparkle & Shine Cleaners">
-          <h3>Sparkle & Shine Cleaners</h3>
-          <p><strong>Service:</strong> Cleaning</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-      </a>
-      <a href="profile.html?id=9" class="profile-link">
-        <div class="profile-card">
-          <img src="images/emergency-1.png" alt="Rapid Repair Co.">
-          <h3>Rapid Repair Co.</h3>
-          <p><strong>Service:</strong> Repairs</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-      </a>
-      <a href="profile.html?id=14" class="profile-link">
-        <div class="profile-card">
-          <img src="images/travelagent-1.png" alt="GlobeTrotter Travel">
-          <h3>GlobeTrotter Travel</h3>
-          <p><strong>Service:</strong> Travel</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-      </a>
-      <a href="profile.html?id=16" class="profile-link">
-        <div class="profile-card">
-          <img src="images/legal-1.png" alt="LawWise Consulting">
-          <h3>LawWise Consulting</h3>
-          <p><strong>Service:</strong> Legal</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-      </a>
-      <a href="profile.html?id=23" class="profile-link">
-        <div class="profile-card">
-          <img src="images/flowers-1.png" alt="Floral Finesse">
-          <h3>Floral Finesse</h3>
-          <p><strong>Service:</strong> Flowers</p>
-          <p><strong>Rating:</strong> ★★★★★</p>
-        </div>
-      </a>
+      <!-- Provider cards rendered by JavaScript -->
     </div>
   </div>
   
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
-  
-  <script>
-    document.getElementById("sort").addEventListener("change", function() {
-      alert("Sort functionality not implemented.");
-    });
-  </script>
 </body>
 </html>
