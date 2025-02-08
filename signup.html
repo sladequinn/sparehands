@@ -4,44 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sign Up – Spare Hands</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      background: #F5F5F5;
-      color: #333;
-    }
-    header {
-      background: #002E5D;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header img {
-      height: 40px;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    nav a {
-      color: #FFFFFF;
-      margin-right: 20px;
-      font-size: 16px;
-    }
     .container {
       max-width: 500px;
       margin: 60px auto;
       padding: 20px;
     }
     .form-container {
-      background: #FFFFFF;
+      background: #FFF;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -50,7 +21,8 @@
       color: #002E5D;
       text-align: center;
     }
-    .form-container input, .form-container select {
+    .form-container input,
+    .form-container select {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -60,36 +32,48 @@
     .form-container button {
       width: 100%;
       background: #00ADEF;
-      color: #FFFFFF;
+      color: #FFF;
       padding: 10px;
       border: none;
       border-radius: 20px;
       cursor: pointer;
       font-size: 16px;
     }
-    .footer {
-      background: #002E5D;
-      color: #FFFFFF;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
-    }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var toggle = document.querySelector(".menu-toggle");
+      var dropdown = document.querySelector(".dropdown-menu");
+      toggle.addEventListener("click", function() {
+        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+      });
+    });
+  </script>
 </head>
 <body>
+  <!-- COMMON HEADER -->
   <header>
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <a href="index.html">
-        <img src="images/logo.png" alt="Spare Hands Logo">
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="search.html">Search</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <div class="header-container">
+      <div class="header-left">
+        <button class="menu-toggle">&#9776;</button>
+      </div>
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
+      </div>
+      <div class="header-right">
+        <div class="header-buttons">
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        </div>
+      </div>
     </div>
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
   
   <div class="container">
@@ -106,7 +90,7 @@
         </select>
         <button type="submit">Create Account</button>
       </form>
-      <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="login.html">Login</a></p>
+      <p style="text-align:center; margin-top:15px;">Already have an account? <a href="login.html">Login</a></p>
     </div>
   </div>
   
