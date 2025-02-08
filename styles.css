@@ -297,3 +297,9 @@ header {
     text-align: center;
   }
 }
+/* Two-column grid for featured boxes, services, marketplace, popular searches */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
