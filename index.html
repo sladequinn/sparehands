@@ -17,67 +17,50 @@
     }
     .header-container {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      position: relative;
+      align-items: center;
     }
     .logo img {
       height: 100px; /* Updated logo size */
     }
-    .menu-toggle {
-      background: #00ADEF;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      display: none;
-    }
-    .nav-menu {
+    .header-right {
       display: flex;
       align-items: center;
     }
-    .nav-menu a {
-      color: #FFFFFF;
-      margin-right: 20px;
-      font-size: 16px;
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+      /* Always show the hamburger icon */
+    }
+    .header-buttons a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+    /* Dropdown overlay menu */
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,46,93,0.95); /* A dark overlay */
+      width: 100%;
+      position: absolute;
+      top: 130px; /* just below the header */
+      left: 0;
+    }
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-top: 1px solid #004080;
+      color: #fff;
       text-decoration: none;
     }
-    .header-buttons {
-      display: flex;
-      align-items: center;
-    }
-    .btn.btn-login {
-      border: 1px solid #FFFFFF;
-      padding: 8px 16px;
-      border-radius: 20px;
-      margin-right: 10px;
-    }
-    .btn.btn-signup {
-      background: #00ADEF;
-      padding: 8px 16px;
-      border-radius: 20px;
-      color: #FFFFFF;
-    }
-    /* Dropdown overlay for mobile */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(0,46,93,0.95);
-        position: absolute;
-        top: 120px;
-        left: 0;
-      }
-      .nav-menu a {
-        margin: 10px 0;
-      }
+    .dropdown-menu a:hover {
+      background: #004080;
     }
     /* Page-specific styles for index */
     .container {
@@ -120,7 +103,7 @@
     }
     .footer {
       background: #002E5D;
-      color: #FFFFFF;
+      color: #FFF;
       padding: 20px;
       text-align: center;
       font-size: 14px;
@@ -130,12 +113,12 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var toggle = document.querySelector(".menu-toggle");
-      var navMenu = document.querySelector(".nav-menu");
+      var dropdown = document.querySelector(".dropdown-menu");
       toggle.addEventListener("click", function() {
-        if (navMenu.style.display === "block") {
-          navMenu.style.display = "none";
+        if (dropdown.style.display === "flex") {
+          dropdown.style.display = "none";
         } else {
-          navMenu.style.display = "block";
+          dropdown.style.display = "flex";
         }
       });
     });
@@ -148,19 +131,23 @@
       <a href="index.html" class="logo">
         <img src="images/logo.png" alt="Spare Hands Logo">
       </a>
-      <button class="menu-toggle">Menu</button>
-      <nav class="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+      <div class="header-right">
+        <!-- Hamburger icon on far right -->
+        <button class="menu-toggle">&#9776;</button>
+      </div>
       <div class="header-buttons">
         <a href="login.html" class="btn btn-login">Login</a>
         <a href="signup.html" class="btn btn-signup">Sign Up</a>
       </div>
     </div>
+    <!-- Dropdown overlay menu (hidden by default) -->
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
   
   <!-- Page Content -->
