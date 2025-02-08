@@ -6,6 +6,24 @@
   <title>Services – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Page-specific styles for services page */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 60px 0;
+    }
+    .search-bar input {
+      width: 80%;
+      max-width: 600px;
+      padding: 15px;
+      font-size: 18px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+    }
     .sort-options {
       text-align: center;
       margin-bottom: 20px;
@@ -15,27 +33,92 @@
       font-size: 16px;
       border-radius: 5px;
     }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .profile-link {
+      display: block;
+      text-decoration: none;
+    }
+    .profile-card {
+      background: #FFF;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.2s ease;
+      border-bottom: 3px solid #002E5D;
+    }
+    .profile-card:hover {
+      transform: translateY(-5px);
+    }
+    .profile-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .profile-card h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #002E5D;
+    }
+    .profile-card p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #4A4A4A;
+    }
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var toggle = document.querySelector(".menu-toggle");
+      var dropdown = document.querySelector(".dropdown-menu");
+      toggle.addEventListener("click", function() {
+        if (dropdown.style.display === "flex") {
+          dropdown.style.display = "none";
+        } else {
+          dropdown.style.display = "flex";
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <!-- COMMON HEADER -->
   <header>
     <div class="header-container">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Spare Hands Logo">
-      </a>
-      <button class="menu-toggle">Menu</button>
-      <nav class="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html" class="btn btn-login">Login</a>
-        <a href="signup.html" class="btn btn-signup">Sign Up</a>
-      </nav>
+      <div class="header-left">
+        <button class="menu-toggle">&#9776;</button>
+      </div>
+      <div class="logo" style="text-align: center; flex:2;">
+        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
+      </div>
+      <div class="header-right">
+        <div class="header-buttons">
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        </div>
+      </div>
     </div>
+    <!-- Dropdown overlay menu -->
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
   
+  <!-- Services Page Content -->
   <div class="container">
     <div class="search-bar">
       <input type="text" placeholder="Search for services...">
@@ -48,12 +131,13 @@
       </select>
     </div>
     <div class="profile-grid">
-      <!-- List all service providers (using our profiles from profile.html) -->
+      <!-- List of service providers -->
       <a href="profile.html?id=1" class="profile-link">
         <div class="profile-card">
           <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
           <h3>Dirty Deeds Cleaning</h3>
           <p><strong>Service:</strong> Cleaning</p>
+          <p><strong>Rating:</strong> ★★★★☆</p>
         </div>
       </a>
       <a href="profile.html?id=2" class="profile-link">
@@ -61,6 +145,7 @@
           <img src="images/cleaning-2.png" alt="Sparkle & Shine Cleaners">
           <h3>Sparkle & Shine Cleaners</h3>
           <p><strong>Service:</strong> Cleaning</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
         </div>
       </a>
       <a href="profile.html?id=9" class="profile-link">
@@ -68,6 +153,7 @@
           <img src="images/emergency-1.png" alt="Rapid Repair Co.">
           <h3>Rapid Repair Co.</h3>
           <p><strong>Service:</strong> Repairs</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
         </div>
       </a>
       <a href="profile.html?id=14" class="profile-link">
@@ -75,6 +161,7 @@
           <img src="images/travelagent-1.png" alt="GlobeTrotter Travel">
           <h3>GlobeTrotter Travel</h3>
           <p><strong>Service:</strong> Travel</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
         </div>
       </a>
       <a href="profile.html?id=16" class="profile-link">
@@ -82,6 +169,7 @@
           <img src="images/legal-1.png" alt="LawWise Consulting">
           <h3>LawWise Consulting</h3>
           <p><strong>Service:</strong> Legal</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
         </div>
       </a>
       <a href="profile.html?id=23" class="profile-link">
@@ -89,9 +177,9 @@
           <img src="images/flowers-1.png" alt="Floral Finesse">
           <h3>Floral Finesse</h3>
           <p><strong>Service:</strong> Flowers</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
         </div>
       </a>
-      <!-- Add more providers as desired -->
     </div>
   </div>
   
