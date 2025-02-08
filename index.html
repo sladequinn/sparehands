@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spare Hands – Home</title>
-  <!-- Link to your external CSS file -->
+  <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Common Header Styles */
@@ -19,6 +19,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
     .logo img {
       height: 100px; /* Updated logo size */
@@ -47,10 +48,10 @@
     .dropdown-menu {
       display: none;
       flex-direction: column;
-      background: rgba(0,46,93,0.95); /* A dark overlay */
+      background: rgba(0,46,93,0.95); /* Dark overlay */
       width: 100%;
       position: absolute;
-      top: 130px; /* just below the header */
+      top: 130px; /* Just below the header */
       left: 0;
     }
     .dropdown-menu a {
@@ -115,6 +116,7 @@
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
       toggle.addEventListener("click", function() {
+        // Toggle the dropdown overlay menu vertically
         if (dropdown.style.display === "flex") {
           dropdown.style.display = "none";
         } else {
@@ -140,7 +142,7 @@
         <a href="signup.html" class="btn btn-signup">Sign Up</a>
       </div>
     </div>
-    <!-- Dropdown overlay menu (hidden by default) -->
+    <!-- Dropdown overlay menu -->
     <nav class="dropdown-menu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
