@@ -3,80 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spare Hands – Home</title>
+  <title>Services – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Header Styles --- */
-    header {
-      background: #002E5D;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    /* Left: Hamburger */
-    .header-left {
-      flex: 1;
-    }
-    .menu-toggle {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 32px;
-      cursor: pointer;
-    }
-    /* Center: Logo */
-    .logo {
-      flex: 2;
-      text-align: center;
-    }
-    .logo img {
-      height: 100px; /* Updated logo size */
-    }
-    /* Right: Login/Signup stacked vertically */
-    .header-right {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .header-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-    .header-buttons a {
-      text-decoration: none;
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 8px 16px;
-      border-radius: 20px;
-      margin-bottom: 5px;
-    }
-    /* Dropdown overlay menu (for mobile) */
-    .dropdown-menu {
-      display: none;
-      flex-direction: column;
-      background: rgba(0,46,93,0.95); /* Dark overlay */
-      width: 100%;
-      position: absolute;
-      top: 130px; /* just below header */
-      left: 0;
-    }
-    .dropdown-menu a {
-      padding: 10px 20px;
-      border-top: 1px solid #004080;
-      color: #fff;
-      text-decoration: none;
-    }
-    .dropdown-menu a:hover {
-      background: #004080;
-    }
-    /* --- Page Styles for Index --- */
+    /* Page-specific styles for services page */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -94,26 +24,49 @@
       border: 1px solid #ddd;
       border-radius: 30px;
     }
-    .popular-searches {
+    .sort-options {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sort-options select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .profile-link {
+      display: block;
+      text-decoration: none;
+    }
+    .profile-card {
       background: #FFF;
-      padding: 20px;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
+      padding: 15px;
+      transition: transform 0.2s ease;
+      border-bottom: 3px solid #002E5D;
     }
-    .popular-searches h2 {
+    .profile-card:hover {
+      transform: translateY(-5px);
+    }
+    .profile-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .profile-card h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
       color: #002E5D;
     }
-    .popular-searches ul {
-      list-style: none;
-      padding: 0;
-    }
-    .popular-searches li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .popular-searches li:last-child {
-      border-bottom: none;
+    .profile-card p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #4A4A4A;
     }
     .footer {
       background: #002E5D;
@@ -123,42 +76,12 @@
       font-size: 14px;
       margin-top: 40px;
     }
-    /* --- Mobile Overrides --- */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-wrap: wrap;
-      }
-      .logo {
-        order: 2;
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-      }
-      .header-left {
-        order: 1;
-      }
-      .header-right {
-        order: 3;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-      }
-      .header-buttons {
-        flex-direction: column;
-        align-items: flex-end;
-      }
-      /* Show hamburger icon if not already visible */
-      .menu-toggle {
-        display: block;
-      }
-    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
       toggle.addEventListener("click", function() {
-        // Toggle the dropdown overlay vertically
         if (dropdown.style.display === "flex") {
           dropdown.style.display = "none";
         } else {
@@ -175,7 +98,7 @@
       <div class="header-left">
         <button class="menu-toggle">&#9776;</button>
       </div>
-      <div class="logo">
+      <div class="logo" style="text-align: center; flex:2;">
         <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
       </div>
       <div class="header-right">
@@ -195,29 +118,79 @@
     </nav>
   </header>
   
-  <!-- Page Content -->
+  <!-- Services Page Content -->
   <div class="container">
     <div class="search-bar">
-      <input type="text" placeholder="Search for services, goods, or help...">
+      <input type="text" placeholder="Search for services...">
     </div>
-    <div class="popular-searches">
-      <h2>Popular Searches</h2>
-      <ul>
-        <li><a href="search.html?q=cleaning+dog+shit">I need help cleaning dog shit</a></li>
-        <li><a href="search.html?q=buy+blueberries">Buy blueberries</a></li>
-        <li><a href="search.html?q=emergency+repairs">I need emergency repairs</a></li>
-        <li><a href="search.html?q=jump+start+car">I need a jump start for my car</a></li>
-        <li><a href="search.html?q=travel+agent">Travel agent</a></li>
-        <li><a href="search.html?q=legal+advice">Legal advice</a></li>
-        <li><a href="search.html?q=couches+for+sale">Couches for sale</a></li>
-        <li><a href="search.html?q=need+a+fourth+for+a+game+of+pool">Need a fourth for a game of pool</a></li>
-        <li><a href="search.html?q=flowers">Flowers</a></li>
-      </ul>
+    <div class="sort-options">
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option value="nearest">Nearest</option>
+        <option value="ratings">Ratings</option>
+      </select>
+    </div>
+    <div class="profile-grid">
+      <!-- List of service providers -->
+      <a href="profile.html?id=1" class="profile-link">
+        <div class="profile-card">
+          <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
+          <h3>Dirty Deeds Cleaning</h3>
+          <p><strong>Service:</strong> Cleaning</p>
+          <p><strong>Rating:</strong> ★★★★☆</p>
+        </div>
+      </a>
+      <a href="profile.html?id=2" class="profile-link">
+        <div class="profile-card">
+          <img src="images/cleaning-2.png" alt="Sparkle & Shine Cleaners">
+          <h3>Sparkle & Shine Cleaners</h3>
+          <p><strong>Service:</strong> Cleaning</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+        </div>
+      </a>
+      <a href="profile.html?id=9" class="profile-link">
+        <div class="profile-card">
+          <img src="images/emergency-1.png" alt="Rapid Repair Co.">
+          <h3>Rapid Repair Co.</h3>
+          <p><strong>Service:</strong> Repairs</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+        </div>
+      </a>
+      <a href="profile.html?id=14" class="profile-link">
+        <div class="profile-card">
+          <img src="images/travelagent-1.png" alt="GlobeTrotter Travel">
+          <h3>GlobeTrotter Travel</h3>
+          <p><strong>Service:</strong> Travel</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+        </div>
+      </a>
+      <a href="profile.html?id=16" class="profile-link">
+        <div class="profile-card">
+          <img src="images/legal-1.png" alt="LawWise Consulting">
+          <h3>LawWise Consulting</h3>
+          <p><strong>Service:</strong> Legal</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+        </div>
+      </a>
+      <a href="profile.html?id=23" class="profile-link">
+        <div class="profile-card">
+          <img src="images/flowers-1.png" alt="Floral Finesse">
+          <h3>Floral Finesse</h3>
+          <p><strong>Service:</strong> Flowers</p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+        </div>
+      </a>
     </div>
   </div>
   
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
+  
+  <script>
+    document.getElementById("sort").addEventListener("change", function() {
+      alert("Sort functionality not implemented.");
+    });
+  </script>
 </body>
 </html>
