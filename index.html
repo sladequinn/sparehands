@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spare Hands – Home</title>
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Common Header Styles --- */
+    /* --- Header Styles (exactly as in index) --- */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -21,26 +20,23 @@
       justify-content: space-between;
       position: relative;
     }
-    /* Left: Hamburger */
     .header-left {
       flex: 1;
     }
     .menu-toggle {
       background: none;
       border: none;
-      color: #40e0d0; /* Changed to turquoise */
+      color: #40e0d0;
       font-size: 32px;
       cursor: pointer;
     }
-    /* Center: Logo */
     .logo {
       flex: 2;
       text-align: center;
     }
     .logo img {
-      height: 100px; /* Updated logo size */
+      height: 100px;
     }
-    /* Right: Login/Signup stacked vertically */
     .header-right {
       flex: 1;
       display: flex;
@@ -54,19 +50,18 @@
     .header-buttons a {
       text-decoration: none;
       color: #002E5D;
-      background: #40e0d0; /* Changed to turquoise */
+      background: #40e0d0;
       border: 1px solid #40e0d0;
       padding: 8px 16px;
       border-radius: 20px;
       margin-bottom: 5px;
-      font-weight: bold; /* Text bold */
+      font-weight: bold;
     }
-    /* Dropdown overlay menu */
     .dropdown-menu {
       display: none;
       flex-direction: column;
       background: rgba(0,46,93,0.95);
-      width: 150px; /* Reduced width */
+      width: 150px;
       position: absolute;
       top: 130px;
       left: 0;
@@ -77,7 +72,7 @@
       border-top: 1px solid #004080;
       color: #40e0d0;
       text-decoration: none;
-      font-weight: bold; /* Text bold */
+      font-weight: bold;
     }
     .dropdown-menu a:hover {
       background: #004080;
@@ -100,44 +95,6 @@
       border: 1px solid #ddd;
       border-radius: 30px;
     }
-    /* Featured Sections */
-    .featured-section {
-      margin-bottom: 40px;
-    }
-    .featured-section h2 {
-      color: #002E5D;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .featured-item {
-      background: #FFF;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 15px;
-      text-align: center;
-      border-bottom: 4px solid #002E5D;
-      transition: transform 0.2s ease;
-    }
-    .featured-item:hover {
-      transform: translateY(-5px);
-    }
-    .featured-item img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .featured-item h3 {
-      margin: 10px 0 5px;
-      font-size: 18px;
-      color: #002E5D;
-    }
-    /* Popular Searches */
     .popular-searches {
       background: #FFF;
       padding: 20px;
@@ -159,7 +116,45 @@
     .popular-searches li:last-child {
       border-bottom: none;
     }
-    /* Footer */
+    /* --- Updated Featured Sections using Marketplace Item Layout --- */
+    .featured-section {
+      margin-bottom: 40px;
+    }
+    .featured-section h2 {
+      color: #002E5D;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Use marketplace grid and inventory item styles */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .inventory-item {
+      background: #FFF;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      border-bottom: 3px solid #002E5D;
+      transition: transform 0.2s ease;
+    }
+    .inventory-item:hover {
+      transform: translateY(-5px);
+    }
+    .inventory-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .inventory-item h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      color: #002E5D;
+    }
+    /* --- Footer --- */
     .footer {
       background: #002E5D;
       color: #FFF;
@@ -170,28 +165,11 @@
     }
     /* --- Mobile Overrides --- */
     @media (max-width: 768px) {
-      .header-container {
-        flex-wrap: wrap;
-      }
-      .header-left {
-        order: 1;
-      }
-      .logo {
-        order: 2;
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-      }
-      .header-right {
-        order: 3;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-      }
-      .header-buttons {
-        flex-direction: column;
-        align-items: flex-end;
-      }
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+      .header-buttons { flex-direction: column; align-items: flex-end; }
     }
   </style>
   <script>
@@ -230,21 +208,13 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-</body>
-</html>
-
-</body>
-</html>
-
-</body>
-</html>
 
   <!-- Page Content -->
   <div class="container">
     <div class="search-bar">
       <input type="text" placeholder="Search for services, goods, or help...">
     </div>
-        <!-- Popular Searches Section -->
+    <!-- Popular Searches Section -->
     <div class="popular-searches">
       <h2>POPULAR SEARCHES</h2>
       <ul>
@@ -259,48 +229,48 @@
         <li><a href="search.html?q=flowers">Flowers</a></li>
       </ul>
     </div>
-  </div>
-    <!-- Featured Services Section -->
+
+    <!-- Featured Services Section using marketplace layout -->
     <div class="featured-section">
       <h2>FEATURED SERVICES</h2>
-      <div class="featured-grid">
-        <div class="featured-item">
-          <a href="profile.html?id=1">
+      <div class="grid-2">
+        <a href="profile.html?id=1">
+          <div class="inventory-item">
             <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
             <h3>Dirty Deeds Cleaning</h3>
-          </a>
-        </div>
-        <div class="featured-item">
-          <a href="profile.html?id=9">
+          </div>
+        </a>
+        <a href="profile.html?id=9">
+          <div class="inventory-item">
             <img src="images/emergency-1.png" alt="Rapid Repair Co.">
             <h3>Rapid Repair Co.</h3>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </div>
     
-    <!-- Featured Goods Section -->
+    <!-- Featured Goods Section using marketplace layout -->
     <div class="featured-section">
       <h2>FEATURED GOODS</h2>
-      <div class="featured-grid">
-        <div class="featured-item">
-          <a href="item.html?item=101">
+      <div class="grid-2">
+        <a href="item.html?item=101">
+          <div class="inventory-item">
             <img src="images/blueberries-1.png" alt="Organic Blueberries">
             <h3>Organic Blueberries</h3>
-          </a>
-        </div>
-        <div class="featured-item">
-          <a href="item.html?item=107">
+          </div>
+        </a>
+        <a href="item.html?item=107">
+          <div class="inventory-item">
             <img src="images/flowers-1.png" alt="Rose Bouquet">
             <h3>Rose Bouquet</h3>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </div>
-    
+  </div>
+  
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
 </body>
 </html>
-  
