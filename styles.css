@@ -1,0 +1,71 @@
+<style>
+  header {
+    background: #002E5D;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo img {
+    height: 80px; /* Bigger logo */
+  }
+  .menu-toggle {
+    background: #00ADEF;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+  }
+  .nav-menu a {
+    color: #FFFFFF;
+    margin-right: 20px;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .btn-login {
+    border: 1px solid #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  .btn-signup {
+    background: #00ADEF;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  @media(max-width:768px) {
+    .menu-toggle {
+      display: block;
+    }
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: #002E5D;
+    }
+    .nav-menu a {
+      margin: 10px 0;
+    }
+  }
+</style>
+<script>
+  // Toggle dropdown menu on mobile
+  document.addEventListener("DOMContentLoaded", function() {
+    var toggle = document.querySelector(".menu-toggle");
+    var navMenu = document.querySelector(".nav-menu");
+    toggle.addEventListener("click", function() {
+      if (navMenu.style.display === "block") {
+        navMenu.style.display = "none";
+      } else {
+        navMenu.style.display = "block";
+      }
+    });
+  });
+</script>
