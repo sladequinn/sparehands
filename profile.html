@@ -6,7 +6,7 @@
   <title>Profile – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Common Header Styles --- */
+    /* === Header (exactly as in index) === */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -20,9 +20,7 @@
       justify-content: space-between;
       position: relative;
     }
-    .header-left {
-      flex: 1;
-    }
+    .header-left { flex: 1; }
     .menu-toggle {
       background: none;
       border: none;
@@ -30,13 +28,8 @@
       font-size: 32px;
       cursor: pointer;
     }
-    .logo {
-      flex: 2;
-      text-align: center;
-    }
-    .logo img {
-      height: 100px;
-    }
+    .logo { flex: 2; text-align: center; }
+    .logo img { height: 100px; }
     .header-right {
       flex: 1;
       display: flex;
@@ -74,10 +67,9 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .dropdown-menu a:hover {
-      background: #004080;
-    }
-    /* --- Page Content Styles --- */
+    .dropdown-menu a:hover { background: #004080; }
+    
+    /* === Page Content === */
     .container { max-width: 1200px; margin: auto; padding: 20px; }
     .profile-header {
       background: #FFF;
@@ -93,7 +85,11 @@
       border-radius: 50%;
       margin-bottom: 15px;
     }
-    .profile-header h2 { color: #002E5D; margin: 10px 0 5px; font-size: 24px; }
+    .profile-header h2 {
+      color: #002E5D;
+      margin: 10px 0 5px;
+      font-size: 24px;
+    }
     .profile-details {
       background: #FFF;
       padding: 30px;
@@ -103,13 +99,14 @@
       text-align: left;
     }
     .profile-details h3 { color: #002E5D; margin-top: 0; }
-    .profile-details p, .profile-details ul {
+    .profile-details p,
+    .profile-details ul {
       font-size: 14px;
       color: #4A4A4A;
       line-height: 1.6;
     }
     .profile-details ul { list-style: disc inside; }
-    /* --- Fixed Message Form (max-width) --- */
+    /* === Fixed Message Form === */
     .message-form {
       margin-top: 30px;
       text-align: left;
@@ -117,7 +114,7 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .message-form input, 
+    .message-form input,
     .message-form textarea {
       width: 100%;
       padding: 10px;
@@ -133,13 +130,13 @@
       border-radius: 20px;
       cursor: pointer;
     }
-    .footer { 
-      background: #002E5D; 
-      color: #FFF; 
-      padding: 20px; 
-      text-align: center; 
-      font-size: 14px; 
-      margin-top: 60px; 
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 60px;
     }
     @media (max-width:768px) {
       .header-container { flex-wrap: wrap; }
@@ -192,7 +189,7 @@
   </div>
   
   <script>
-    // Helper: Get query parameter by name
+    // Helper to get query parameters
     function getParameterByName(name, url) {
       if (!url) url = window.location.href;
       name = name.replace(/[\[\]]/g, '\\$&');
@@ -203,7 +200,7 @@
       return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
     
-    // All profiles (IDs 1–24)
+    // Full profiles object (IDs 1–24)
     var profiles = {
       "1": { "title": "Dirty Deeds Cleaning", "service": "Home & Commercial Cleaning", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/cleaning-1.png", "about": "Dirty Deeds Cleaning tackles your messiest problems—from dog accidents to major commercial cleanups. Our team is available 24/7 to ensure that no dirt goes unchallenged.", "services": ["Emergency Cleanup", "Deep Cleaning", "Commercial & Residential Cleaning", "Custom Cleaning Solutions"], "phone": "(519) 555-1234", "email": "info@dirtydeedscleaning.ca" },
       "2": { "title": "Sparkle & Shine Cleaners", "service": "Deep Cleaning", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/cleaning-2.png", "about": "Sparkle & Shine Cleaners delivers high-quality deep cleaning services with an eye for detail. We transform your space into a sparkling clean environment.", "services": ["Deep Cleaning Sessions", "Window & Surface Cleaning", "Custom Cleaning Packages"], "phone": "(519) 555-5678", "email": "info@sparkleshine.ca" },
@@ -228,8 +225,7 @@
       "21": { "title": "Pool Pals", "service": "Game Partner Matching", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/pool-1.png", "about": "Pool Pals connects you with the perfect game partner for a fun and competitive pool match.", "services": ["Game Partner Matching", "Pool Tournament Organizing", "Social Billiards Meetups"], "phone": "(519) 555-6677", "email": "play@poolpals.ca" },
       "22": { "title": "Cue Crew", "service": "Pool & Billiards Meetups", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/pool-2.png", "about": "Cue Crew organizes casual and competitive pool meetups for enthusiasts.", "services": ["Pool Meetup Scheduling", "Billiards Tournaments", "Social Gaming Events"], "phone": "(519) 555-7788", "email": "info@cuecrew.ca" },
       "23": { "title": "Floral Finesse", "service": "Flower Arrangements", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/flowers-1.png", "about": "Floral Finesse creates exquisite flower arrangements for every occasion.", "services": ["Custom Bouquets", "Event Floral Design"], "phone": "(519) 555-3345", "email": "info@floralfinesse.ca", "inventoryItems": [ { "name": "Rose Bouquet", "price": "$29.99", "image": "images/flowers-1.png" }, { "name": "Tulip Arrangement", "price": "$24.99", "image": "images/flowers-2.png" } ] },
-      "24": { "title": "Garden Bloomers", "service": "Garden & Bouquet Design", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/flowers-2.png", "about": "Garden Bloomers specializes in designing beautiful gardens and bouquets that brighten your day.", "services": ["Garden Design", "Bouquet Customization"], "phone": "(519) 555-3346", "email": "contact@gardenbloomers.ca", "inventoryItems": [ { "name": "Seasonal Bouquet", "price": "$24.99", "image": "images/flowers-2.png" } ] 
-              
+      "24": { "title": "Garden Bloomers", "service": "Garden & Bouquet Design", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/flowers-2.png", "about": "Garden Bloomers specializes in designing beautiful gardens and bouquets that brighten your day.", "services": ["Garden Design", "Bouquet Customization"], "phone": "(519) 555-3346", "email": "contact@gardenbloomers.ca", "inventoryItems": [ { "name": "Seasonal Bouquet", "price": "$24.99", "image": "images/flowers-2.png" } ] }
     };
     
     function renderProfile(data) {
