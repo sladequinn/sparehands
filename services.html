@@ -3,12 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Services – Spare Hands</title>
+  <title>Spare Hands – Home</title>
+  <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Common Header Styles (same as above) */
-    .container { max-width: 1200px; margin: auto; padding: 20px; }
-    .search-bar { text-align: center; margin: 60px 0; }
+    /* --- Common Header Styles --- */
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    /* Left: Hamburger */
+    .header-left {
+      flex: 1;
+    }
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+    }
+    /* Center: Logo */
+    .logo {
+      flex: 2;
+      text-align: center;
+    }
+    .logo img {
+      height: 100px; /* Updated logo size */
+    }
+    /* Right: Login/Signup stacked vertically */
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .header-buttons a {
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+    }
+    /* Dropdown overlay menu */
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,46,93,0.95);
+      width: 100%;
+      position: absolute;
+      top: 130px;
+      left: 0;
+    }
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-top: 1px solid #004080;
+      color: #fff;
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: #004080;
+    }
+    /* --- Page Styles --- */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 60px 0;
+    }
     .search-bar input {
       width: 80%;
       max-width: 600px;
@@ -17,85 +96,105 @@
       border: 1px solid #ddd;
       border-radius: 30px;
     }
-    .sort-options {
+    /* Featured Sections */
+    .featured-section {
+      margin-bottom: 40px;
+    }
+    .featured-section h2 {
+      color: #002E5D;
       text-align: center;
       margin-bottom: 20px;
     }
-    .sort-options select {
-      padding: 8px;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-    .profile-grid {
+    .featured-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-    .profile-link { display: block; text-decoration: none; }
-    .profile-card {
+    .featured-item {
       background: #FFF;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       padding: 15px;
-      transition: transform 0.2s ease;
+      text-align: center;
       border-bottom: 3px solid #002E5D;
+      transition: transform 0.2s ease;
     }
-    .profile-card:hover { transform: translateY(-5px); }
-    .profile-card img {
+    .featured-item:hover {
+      transform: translateY(-5px);
+    }
+    .featured-item img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 10px;
     }
-    .profile-card h3 { margin: 10px 0 5px; font-size: 20px; color: #002E5D; }
-    .profile-card p { margin: 5px 0; font-size: 14px; color: #4A4A4A; }
-    .footer { background: #002E5D; color: #FFF; padding: 20px; text-align: center; font-size: 14px; margin-top: 60px; }
-    @media (max-width:768px) {
-      .header-container { flex-wrap: wrap; }
-      .header-left, .header-right { flex: 1 100%; text-align: center; }
+    .featured-item h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #002E5D;
+    }
+    /* Popular Searches */
+    .popular-searches {
+      background: #FFF;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    .popular-searches h2 {
+      color: #002E5D;
+    }
+    .popular-searches ul {
+      list-style: none;
+      padding: 0;
+    }
+    .popular-searches li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .popular-searches li:last-child {
+      border-bottom: none;
+    }
+    /* Footer */
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    /* --- Mobile Overrides --- */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-wrap: wrap;
+      }
+      .header-left {
+        order: 1;
+      }
+      .logo {
+        order: 2;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+      }
+      .header-right {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .header-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+      }
     }
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
+    document.addEventListener("DOMContentLoaded", function() {
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
-      toggle.addEventListener("click", function(){
+      toggle.addEventListener("click", function() {
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
-      });
-      
-      var serviceProviders = [
-        { id: "1", image: "images/cleaning-1.png", title: "Dirty Deeds Cleaning", service: "Cleaning", rating: 4 },
-        { id: "2", image: "images/cleaning-2.png", title: "Sparkle & Shine Cleaners", service: "Cleaning", rating: 5 },
-        { id: "9", image: "images/emergency-1.png", title: "Rapid Repair Co.", service: "Repairs", rating: 5 },
-        { id: "14", image: "images/travelagent-1.png", title: "GlobeTrotter Travel", service: "Travel", rating: 5 },
-        { id: "16", image: "images/legal-1.png", title: "LawWise Consulting", service: "Legal", rating: 5 },
-        { id: "23", image: "images/flowers-1.png", title: "Floral Finesse", service: "Flowers", rating: 5 }
-      ];
-      
-      function renderProviders(providers) {
-        var container = document.querySelector(".profile-grid");
-        var html = "";
-        providers.forEach(function(provider) {
-          html += '<a href="profile.html?id=' + provider.id + '" class="profile-link">';
-          html += '<div class="profile-card">';
-          html += '<img src="' + provider.image + '" alt="' + provider.title + '">';
-          html += '<h3>' + provider.title + '</h3>';
-          html += '<p><strong>Service:</strong> ' + provider.service + '</p>';
-          html += '<p><strong>Rating:</strong> ' + "★".repeat(provider.rating) + "☆".repeat(5 - provider.rating) + '</p>';
-          html += '</div></a>';
-        });
-        container.innerHTML = html;
-      }
-      
-      // Initial render
-      renderProviders(serviceProviders);
-      
-      document.getElementById("sort").addEventListener("change", function(){
-        var sortValue = this.value;
-        var sorted = serviceProviders.slice();
-        if (sortValue === "ratings") {
-          sorted.sort(function(a, b){ return b.rating - a.rating; });
-        } // else default order is "nearest"
-        renderProviders(sorted);
       });
     });
   </script>
@@ -107,16 +206,17 @@
       <div class="header-left">
         <button class="menu-toggle">&#9776;</button>
       </div>
-      <div class="logo" style="text-align:center;">
+      <div class="logo">
         <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
       </div>
       <div class="header-right">
         <div class="header-buttons">
-          <a href="login.html">Login</a>
-          <a href="signup.html">Sign Up</a>
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
         </div>
       </div>
     </div>
+    <!-- Dropdown overlay menu -->
     <nav class="dropdown-menu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
