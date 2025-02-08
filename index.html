@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Page Title</title>
-  <!-- Link to your external CSS file -->
+  <title>Spare Hands – Home</title>
   <link rel="stylesheet" href="styles.css">
-  
-  <!-- You can also include header-specific CSS here -->
   <style>
-    /* Example header styles */
+    /* Header-specific CSS (common to all pages) */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -24,7 +21,7 @@
       flex-wrap: wrap;
     }
     .logo img {
-      height: 80px; /* Bigger logo */
+      height: 80px;
     }
     .menu-toggle {
       background: #00ADEF;
@@ -71,8 +68,6 @@
       }
     }
   </style>
-  
-  <!-- Include JavaScript for the dropdown menu -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var toggle = document.querySelector(".menu-toggle");
@@ -88,7 +83,7 @@
   </script>
 </head>
 <body>
-  <!-- COMMON HEADER (paste this block into the top of every file's body) -->
+  <!-- COMMON HEADER -->
   <header>
     <div class="header-container">
       <a href="index.html" class="logo">
@@ -105,30 +100,15 @@
       </nav>
     </div>
   </header>
-<body>
-  <header>
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <a href="index.html">
-        <img src="images/logo.png" alt="Spare Hands Logo">
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="search.html">Search</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html" class="btn btn-login">Login</a>
-        <a href="signup.html" class="btn btn-signup">Sign Up</a>
-      </nav>
-    </div>
-  </header>
   
+  <!-- Page Content -->
   <div class="container">
-    <div class="search-bar">
-      <input type="text" placeholder="Search for services, goods, or help...">
+    <div class="search-bar" style="text-align:center; margin:60px 0;">
+      <input type="text" placeholder="Search for services, goods, or help..." style="width:80%; max-width:600px; padding:15px; font-size:18px; border:1px solid #ddd; border-radius:30px;">
     </div>
-    <div class="popular-searches">
-      <h2>Popular Searches</h2>
-      <ul>
+    <div class="popular-searches" style="background:#FFF; padding:20px; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.1); margin-bottom:40px;">
+      <h2 style="color:#002E5D;">Popular Searches</h2>
+      <ul style="list-style:none; padding:0;">
         <li><a href="search.html?q=cleaning+dog+shit">I need help cleaning dog shit</a></li>
         <li><a href="search.html?q=buy+blueberries">Buy blueberries</a></li>
         <li><a href="search.html?q=emergency+repairs">I need emergency repairs</a></li>
@@ -137,6 +117,7 @@
         <li><a href="search.html?q=legal+advice">Legal advice</a></li>
         <li><a href="search.html?q=couches+for+sale">Couches for sale</a></li>
         <li><a href="search.html?q=need+a+fourth+for+a+game+of+pool">Need a fourth for a game of pool</a></li>
+        <li><a href="search.html?q=flowers">Flowers</a></li>
       </ul>
     </div>
   </div>
