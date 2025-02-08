@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spare Hands – Home</title>
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
   <style>
     /* --- Common Header Styles --- */
@@ -38,9 +37,9 @@
       text-align: center;
     }
     .logo img {
-      height: 100px; /* Updated logo size */
+      height: 100px;
     }
-    /* Right: Login/Signup stacked vertically */
+    /* Right: Login/Signup */
     .header-right {
       flex: 1;
       display: flex;
@@ -84,22 +83,7 @@
       margin: auto;
       padding: 20px;
     }
-    .search-bar {
-      text-align: center;
-      margin: 60px 0;
-    }
-    .search-bar input {
-      width: 80%;
-      max-width: 600px;
-      padding: 15px;
-      font-size: 18px;
-      border: 1px solid #ddd;
-      border-radius: 30px;
-    }
     /* Featured Sections */
-    .featured-section {
-      margin-bottom: 40px;
-    }
     .featured-section h2 {
       color: #002E5D;
       text-align: center;
@@ -114,176 +98,8 @@
       background: #FFF;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 15px;
-      text-align: center;
-      border-bottom: 3px solid #002E5D;
-      transition: transform 0.2s ease;
-    }
-    .featured-item:hover {
-      transform: translateY(-5px);
-    }
-    .featured-item img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .featured-item h3 {
-      margin: 10px 0 5px;
-      font-size: 20px;
-      color: #002E5D;
-    }
-    /* Popular Searches */
-    .popular-searches {
-      background: #FFF;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    .popular-searches h2 {
-      color: #002E5D;
-    }
-    .popular-searches ul {
-      list-style: none;
-      padding: 0;
-    }
-    .popular-searches li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .popular-searches li:last-child {
-      border-bottom: none;
-    }
-    /* Footer */
-    .footer {
-      background: #002E5D;
-      color: #FFF;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-    /* --- Mobile Overrides --- */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-wrap: wrap;
-      }
-      .header-left {
-        order: 1;
-      }
-      .logo {
-        order: 2;
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-      }
-      .header-right {
-        order: 3;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-      }
-      .header-buttons {
-        flex-direction: column;
-        align-items: flex-end;
-      }
-    }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var toggle = document.querySelector(".menu-toggle");
-      var dropdown = document.querySelector(".dropdown-menu");
-      toggle.addEventListener("click", function() {
-        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
-      });
-    });
-  </script>
-</head>
-<body>
-  <!-- COMMON HEADER -->
-  <header>
-    <div class="header-container">
-      <div class="header-left">
-        <button class="menu-toggle">&#9776;</button>
-      </div>
-      <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
-      </div>
-      <div class="header-right">
-        <div class="header-buttons">
-          <a href="login.html" class="btn btn-login">Login</a>
-          <a href="signup.html" class="btn btn-signup">Sign Up</a>
-        </div>
-      </div>
-    </div>
-    <!-- Dropdown overlay menu -->
-    <nav class="dropdown-menu">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </body>
-</html>body
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marketplace – Spare Hands</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .container { max-width: 1200px; margin: auto; padding: 20px; }
-    h2 { color: #002E5D; text-align: center; margin-bottom: 20px; }
-    /* Use 2-column grid */
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
-    .inventory-item {
-      background: #FFF;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 15px;
-      text-align: center;
-      border-bottom: 3px solid #002E5D;
-      transition: transform 0.2s ease;
-    }
-    .inventory-item:hover { transform: translateY(-5px); }
-    .inventory-item img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
-    .inventory-item h3 { margin: 10px 0 5px; font-size: 18px; color: #002E5D; }
-    .inventory-item p { font-size: 14px; color: #4A4A4A; margin: 5px 0; }
-    .footer { background: #002E5D; color: #FFF; padding: 20px; text-align: center; font-size: 14px; margin-top: 60px; }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      var toggle = document.querySelector(".menu-toggle");
-      var dropdown = document.querySelector(".dropdown-menu");
-      toggle.addEventListener("click", function(){
-        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
-      });
-      
-      var inventoryItems = [
-        { id: "101", provider: "Blueberry Bliss Farm", category: "Fruit", name: "Organic Blueberries", image: "images/blueberries-1.png", price: "$4.99/lb" },
-        { id: "102", provider: "Berry Best Produce", category: "Fruit", name: "Fresh Strawberries", image: "images/blueberries-2.png", price: "$3.99/lb" },
-        { id: "103", provider: "The Blueberry Basket", category: "Fruit", name: "Mixed Berries", image: "images/blueberries-3.png", price: "$5.99/lb" },
-        { id: "104", provider: "Sofa Central", category: "Furniture", name: "Modern Sofa", image: "images/couches-2.png", price: "$499" },
-        { id: "105", provider: "Luxe Loungers", category: "Furniture", name: "Designer Chair", image: "images/couches-3.png", price: "$299" },
-        { id: "106", provider: "Comfy Living", category: "Furniture", name: "Vintage Coffee Table", image: "images/couches-1.png", price: "$199" },
-        { id: "107", provider: "Floral Finesse", category: "Flowers", name: "Rose Bouquet", image: "images/flowers-1.png", price: "$29.99" },
-        { id: "108", provider: "Garden Bloomers", category: "Flowers", name: "Tulip Arrangement", image: "images/flowers-2.png", price: "$24.99" }
-      ];
-      
-      function renderMarketplace() {
-        var container = document.getElementById("inventory-container");
-        var html = "";
-        inventoryItems.forEach(function(item) {
-          html += '<a href="item.html?item=' + item.id + '" class="profile-link">';
-          html += '<div class="inventory-item">';
-          html += '<img src="' + item.image + '" alt="' + item.name + '">';
-          html += '<h3>' + item.name + '</h3>';
-          html += '<p><strong>Provider:</strong> ' + item.provider + '</p>';
-          html += '<p><strong>Price:</strong> ' + item.price + '</p>';
-          html += '</div></a>';
-        });
-        container.innerHTML = html;
-      }
-      
+  
+
       renderMarketplace();
     });
   </script>
