@@ -1,18 +1,20 @@
 <header>
   <div class="header-container">
-    <div class="header-left">
-      <button class="menu-toggle">&#9776;</button>
+    <!-- Auth Buttons on the Far Left -->
+    <div class="auth-buttons">
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
     </div>
+    <!-- Centered Logo -->
     <div class="logo">
       <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
     </div>
-    <div class="header-right">
-      <div class="auth-buttons">
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
-      </div>
+    <!-- Hamburger Menu on the Far Right -->
+    <div class="hamburger-container">
+      <button class="hamburger">&#9776;</button>
     </div>
   </div>
+  <!-- Dropdown Menu (appears when hamburger is clicked) -->
   <nav class="dropdown-menu">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
@@ -23,41 +25,26 @@
 </header>
 
 <style>
-  /* Header Container */
+  /* Header Styles */
+  header {
+    background: #002E5D;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
   .header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: nowrap;
   }
-  /* Left: Hamburger (fixed width) */
-  .header-left {
-    width: 80px;
-  }
-  .menu-toggle {
-    background: none;
-    border: none;
-    font-size: 32px;
-    color: #fff;
-    cursor: pointer;
-  }
-  /* Center: Logo */
-  .logo {
-    flex: 1;
-    text-align: center;
-  }
-  .logo img {
-    height: 100px;
-  }
-  /* Right: Auth Buttons (fixed width, stacked vertically) */
-  .header-right {
-    width: 150px;
-    text-align: right;
-  }
+  /* Left: Auth Buttons */
   .auth-buttons {
+    width: 150px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 5px;
   }
   .auth-buttons a {
@@ -67,6 +54,26 @@
     padding: 8px 16px;
     border-radius: 20px;
   }
+  /* Center: Logo */
+  .logo {
+    flex: 1;
+    text-align: center;
+  }
+  .logo img {
+    height: 100px;
+  }
+  /* Right: Hamburger */
+  .hamburger-container {
+    width: 80px;
+    text-align: right;
+  }
+  .hamburger {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+  }
   /* Dropdown Menu */
   .dropdown-menu {
     display: none;
@@ -74,7 +81,8 @@
     background: #002E5D;
     width: 100%;
     position: absolute;
-    top: 70px; /* Adjust this value if your header height changes */
+    top: 70px; /* Adjust this value if needed */
+    right: 0;
     left: 0;
   }
   .dropdown-menu a {
@@ -86,12 +94,12 @@
   .dropdown-menu a:hover {
     background: #004080;
   }
-  /* Responsive adjustments */
+  /* Responsive: On small screens, stack everything centered */
   @media (max-width: 768px) {
     .header-container {
       flex-wrap: wrap;
     }
-    .header-left, .logo, .header-right {
+    .auth-buttons, .logo, .hamburger-container {
       width: 100%;
       text-align: center;
     }
@@ -105,10 +113,10 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function(){
-    var menuToggle = document.querySelector('.menu-toggle');
+    var hamburger = document.querySelector('.hamburger');
     var dropdown = document.querySelector('.dropdown-menu');
-    menuToggle.addEventListener('click', function(){
-      // Toggle the dropdown menu between 'flex' and 'none'
+    hamburger.addEventListener('click', function(){
+      // Toggle display between "flex" and "none"
       dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
     });
   });
