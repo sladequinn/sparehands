@@ -3,62 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact – Spare Hands</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <title>About – Spare Hands</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      background: #F5F5F5;
-      color: #333;
-    }
+    /* Common Header Styles */
     header {
       background: #002E5D;
       padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
     }
-    header img {
-      height: 40px;
-    }
-    nav {
+    .header-container {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      position: relative;
     }
-    nav a {
-      color: #FFFFFF;
-      margin-right: 20px;
-      font-size: 16px;
+    .header-left {
+      flex: 1;
     }
-    .btn {
-      padding: 8px 16px;
-      margin-left: 10px;
+    .menu-toggle {
+      background: none;
       border: none;
-      border-radius: 20px;
-      font-size: 14px;
+      color: #fff;
+      font-size: 32px;
       cursor: pointer;
     }
-    .btn-login {
-      background: transparent;
-      color: #FFFFFF;
-      border: 1px solid #FFFFFF;
+    .logo {
+      flex: 2;
+      text-align: center;
     }
-    .btn-signup {
-      background: #00ADEF;
-      color: #FFFFFF;
+    .logo img {
+      height: 100px;
     }
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .header-buttons a {
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+    }
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,46,93,0.95);
+      width: 100%;
+      position: absolute;
+      top: 130px;
+      left: 0;
+    }
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-top: 1px solid #004080;
+      color: #fff;
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: #004080;
+    }
+    /* Page Styles */
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 20px;
     }
     .content {
-      background: #FFFFFF;
+      background: #FFF;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -66,76 +88,73 @@
     }
     .content h2 {
       color: #002E5D;
+      text-align: center;
+      margin-bottom: 20px;
     }
-    .contact-info, .contact-form {
-      margin-top: 20px;
-    }
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    .contact-form button {
-      background: #00ADEF;
-      color: #FFFFFF;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
+    .content p {
       font-size: 16px;
+      line-height: 1.6;
+      color: #333;
     }
     .footer {
       background: #002E5D;
-      color: #FFFFFF;
+      color: #FFF;
       padding: 20px;
       text-align: center;
       font-size: 14px;
       margin-top: 40px;
     }
-    @media (max-width: 600px) {
-      nav a { margin-right: 10px; }
+    /* Mobile Overrides */
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      var toggle = document.querySelector(".menu-toggle");
+      var dropdown = document.querySelector(".dropdown-menu");
+      toggle.addEventListener("click", function(){
+        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+      });
+    });
+  </script>
 </head>
 <body>
+  <!-- COMMON HEADER -->
   <header>
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <a href="index.html">
-        <img src="images/logo.png" alt="Spare Hands Logo">
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="search.html">Search</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html" class="btn btn-login">Login</a>
-        <a href="signup.html" class="btn btn-signup">Sign Up</a>
-      </nav>
+    <div class="header-container">
+      <div class="header-left">
+        <button class="menu-toggle">&#9776;</button>
+      </div>
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
+      </div>
+      <div class="header-right">
+        <div class="header-buttons">
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        </div>
+      </div>
     </div>
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
   
+  <!-- About Content -->
   <div class="container">
     <div class="content">
-      <h2>Contact Us</h2>
-      <p>If you have any questions, feedback, or need support, feel free to get in touch with us.</p>
-      
-      <div class="contact-info">
-        <p><strong>Email:</strong> support@sparehands.com</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Address:</strong> 123 Main Street, Kitchener, ON</p>
-      </div>
-      
-      <div class="contact-form">
-        <h3>Send Us a Message</h3>
-        <form>
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <h2>About Spare Hands</h2>
+      <p>Welcome to Spare Hands – your comprehensive local service hub that connects you with trusted professionals for all your needs. Whether it's emergency repairs, home cleaning, fresh produce, or even finding that extra partner for a game of pool, we've got you covered.</p>
+      <p>Our mission is to simplify your life by making it effortless to find and hire reliable service providers and quality goods right in your neighborhood. Built on trust, quality, and a commitment to exceptional customer service, Spare Hands is here to revolutionize the way you get things done.</p>
+      <p>Join us on this journey and experience a platform that is as modern and user-friendly as it is dependable. Welcome to a new era of local services.</p>
     </div>
   </div>
   
