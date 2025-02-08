@@ -4,11 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Profile – Spare Hands</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Link to external CSS file (place styles.css in the root folder) -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Additional header-specific CSS and JS for the common header -->
   <style>
-    body { font-family: 'Montserrat', sans-serif; margin: 0; background: #F5F5F5; color: #333; }
-    /* Use the same COMMON HEADER CSS as above */
-    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    /* COMMON HEADER CSS */
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo img {
+      height: 80px; /* Larger logo */
+    }
+    .menu-toggle {
+      background: #00ADEF;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      display: none;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+    }
+    .nav-menu a {
+      color: #FFFFFF;
+      margin-right: 20px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .btn-login {
+      border: 1px solid #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+    .btn-signup {
+      background: #00ADEF;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+    @media(max-width:768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #002E5D;
+      }
+      .nav-menu a {
+        margin: 10px 0;
+      }
+    }
+    
+    /* Profile Page Specific CSS */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
     .profile-header {
       background: #FFFFFF;
       padding: 30px;
@@ -17,8 +84,17 @@
       text-align: center;
       margin-top: 40px;
     }
-    .profile-header img { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 15px; }
-    .profile-header h2 { color: #002E5D; margin: 10px 0 5px; font-size: 24px; }
+    .profile-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+    .profile-header h2 {
+      color: #002E5D;
+      margin: 10px 0 5px;
+      font-size: 24px;
+    }
     .profile-details {
       background: #FFFFFF;
       padding: 30px;
@@ -26,38 +102,84 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       margin-top: 20px;
     }
-    .profile-details h3 { color: #002E5D; margin-top: 0; }
-    .profile-details p, .profile-details ul {
+    .profile-details h3 {
+      color: #002E5D;
+      margin-top: 0;
+    }
+    .profile-details p,
+    .profile-details ul {
       font-size: 14px;
       color: #4A4A4A;
       line-height: 1.6;
     }
-    .profile-details ul { list-style: disc inside; }
-    .inventory-link {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 8px 12px;
-      background: #00ADEF;
-      color: #fff;
-      text-decoration: none;
+    .profile-details ul {
+      list-style: disc inside;
+    }
+    .message-form {
+      margin-top: 30px;
+      text-align: left;
+    }
+    .message-form input,
+    .message-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
       border-radius: 5px;
     }
-    .footer { background: #002E5D; color: #FFFFFF; padding: 20px; text-align: center; font-size: 14px; margin-top: 40px; }
+    .message-form button {
+      background: #00ADEF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
   </style>
+  <script>
+    // Dropdown menu JS for header
+    document.addEventListener("DOMContentLoaded", function() {
+      var toggle = document.querySelector(".menu-toggle");
+      var navMenu = document.querySelector(".nav-menu");
+      toggle.addEventListener("click", function() {
+        if (navMenu.style.display === "block") {
+          navMenu.style.display = "none";
+        } else {
+          navMenu.style.display = "block";
+        }
+      });
+    });
+  </script>
 </head>
 <body>
-  <!-- Include COMMON HEADER here -->
-  <div class="container">
-    <div id="profile-content">
-      <!-- Profile content will be injected here -->
+  <!-- COMMON HEADER (copy this header block into every file) -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Spare Hands Logo">
+      </a>
+      <button class="menu-toggle">Menu</button>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn btn-login">Login</a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </nav>
     </div>
+  </header>
+  
+  <div class="container">
+    <div id="profile-content"></div>
   </div>
+  
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
   
   <script>
-    // Helper: Get query parameter
+    // Function to get query parameter by name
     function getParameterByName(name, url) {
       if (!url) url = window.location.href;
       name = name.replace(/[\[\]]/g, '\\$&');
@@ -68,7 +190,7 @@
       return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
     
-    // Define profiles data
+    // All profiles data (ensure all profiles are here)
     var profiles = {
       "1": {
         "title": "Dirty Deeds Cleaning",
@@ -124,8 +246,10 @@
         "services": ["Fresh Blueberry Sales", "Farm Tours", "Organic Produce Delivery"],
         "phone": "(519) 555-7890",
         "email": "info@blueberryblissfarm.ca",
-        "inventory": true,
-        "inventoryLink": "marketplace.html?provider=blueberry"
+        "inventoryItems": [
+          { "name": "Organic Blueberries", "price": "$4.99/lb", "image": "images/blueberries-1.png" },
+          { "name": "Fresh Strawberries", "price": "$3.99/lb", "image": "images/blueberries-2.png" }
+        ]
       },
       "6": {
         "title": "Berry Best Produce",
@@ -137,8 +261,10 @@
         "services": ["Daily Fruit Deliveries", "Seasonal Produce Boxes", "Farm-to-Table Partnerships"],
         "phone": "(519) 555-2345",
         "email": "contact@berrybestproduce.ca",
-        "inventory": true,
-        "inventoryLink": "marketplace.html?provider=berry"
+        "inventoryItems": [
+          { "name": "Fresh Strawberries", "price": "$3.99/lb", "image": "images/blueberries-2.png" },
+          { "name": "Mixed Berries", "price": "$5.99/lb", "image": "images/blueberries-3.png" }
+        ]
       },
       "7": {
         "title": "The Blueberry Basket",
@@ -150,8 +276,9 @@
         "services": ["Handpicked Blueberry Sales", "Customized Produce Baskets", "Local Farmer’s Market Delivery"],
         "phone": "(519) 555-3457",
         "email": "orders@theblueberrybasket.ca",
-        "inventory": true,
-        "inventoryLink": "marketplace.html?provider=blueberry"
+        "inventoryItems": [
+          { "name": "Mixed Berries", "price": "$5.99/lb", "image": "images/blueberries-3.png" }
+        ]
       },
       "8": {
         "title": "Blue Haven Farms",
@@ -163,8 +290,9 @@
         "services": ["Organic Blueberry Sales", "Farm Tours", "Local Produce Delivery"],
         "phone": "(519) 555-4567",
         "email": "info@bluehavenfarms.ca",
-        "inventory": true,
-        "inventoryLink": "marketplace.html?provider=blueberry"
+        "inventoryItems": [
+          { "name": "Organic Blueberries", "price": "$4.99/lb", "image": "images/blueberries-4.png" }
+        ]
       },
       "9": {
         "title": "Rapid Repair Co.",
@@ -275,8 +403,10 @@
         "services": ["Custom Bouquets", "Event Floral Design"],
         "phone": "(519) 555-3345",
         "email": "info@floralfinesse.ca",
-        "inventory": true,
-        "inventoryLink": "marketplace.html?provider=flowers"
+        "inventoryItems": [
+          { "name": "Rose Bouquet", "price": "$29.99", "image": "images/flowers-1.png" },
+          { "name": "Tulip Arrangement", "price": "$24.99", "image": "images/flowers-2.png" }
+        ]
       },
       "24": {
         "title": "Garden Bloomers",
@@ -288,8 +418,9 @@
         "services": ["Garden Design", "Bouquet Customization"],
         "phone": "(519) 555-3346",
         "email": "contact@gardenbloomers.ca",
-        "inventory": true,
-        "inventoryLink": "marketplace.html?provider=flowers"
+        "inventoryItems": [
+          { "name": "Seasonal Bouquet", "price": "$24.99", "image": "images/flowers-2.png" }
+        ]
       }
     };
     
@@ -312,13 +443,34 @@
         html += '<li>' + item + '</li>';
       });
       html += '</ul>';
+      if(data.inventoryItems) {
+        html += '<h3>Inventory</h3>';
+        html += '<div class="inventory-list">';
+        data.inventoryItems.forEach(function(item) {
+          html += '<div class="inventory-item">';
+          html += '<img src="' + item.image + '" alt="' + item.name + '" style="width:100%; border-radius:5px;">';
+          html += '<h4>' + item.name + '</h4>';
+          html += '<p><strong>Price:</strong> ' + item.price + '</p>';
+          html += '</div>';
+        });
+        html += '</div>';
+      }
       html += '<h3>Contact Information</h3>';
       html += '<p>Phone: ' + data.phone + '</p>';
       html += '<p>Email: ' + data.email + '</p>';
-      if(data.inventory && data.inventoryLink) {
-        html += '<p><a href="' + data.inventoryLink + '" class="inventory-link">View Inventory</a></p>';
-      }
       html += '</div>';
+      
+      // Add Send a Message form
+      html += '<div class="message-form">';
+      html += '<h3>Send a Message</h3>';
+      html += '<form>';
+      html += '<input type="text" placeholder="Your Name" required>';
+      html += '<input type="email" placeholder="Your Email" required>';
+      html += '<textarea placeholder="Your Message" rows="5" required></textarea>';
+      html += '<button type="submit">Send Message</button>';
+      html += '</form>';
+      html += '</div>';
+      
       container.innerHTML = html;
     }
     
