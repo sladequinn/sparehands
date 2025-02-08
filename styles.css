@@ -220,3 +220,80 @@ header {
   color: #4A4A4A;
   margin: 5px 0;
 }
+/* Header & Dropdown (identical on every page) */
+header {
+  background: #002E5D;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  flex-wrap: nowrap;
+}
+.header-left, .logo, .header-right {
+  flex: 1;
+}
+.logo {
+  text-align: center;
+}
+.logo img {
+  height: 100px; /* Centered, larger logo */
+}
+.header-right {
+  text-align: right;
+}
+.header-buttons {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+.header-buttons a {
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+.menu-toggle {
+  background: #00ADEF;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 32px;
+  cursor: pointer;
+  /* Always visible */
+}
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(0,46,93,0.95);
+  width: 100%;
+  position: absolute;
+  top: 130px;
+  left: 0;
+}
+.dropdown-menu a {
+  padding: 10px 20px;
+  border-top: 1px solid #004080;
+  color: #fff;
+  text-decoration: none;
+}
+.dropdown-menu a:hover {
+  background: #004080;
+}
+@media (max-width:768px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+  .header-left, .header-right, .logo {
+    flex: 1 100%;
+    text-align: center;
+  }
+}
