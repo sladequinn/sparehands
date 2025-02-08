@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spare Hands – Home</title>
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Common Header Styles */
+    /* --- Header Styles --- */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -17,16 +16,12 @@
     }
     .header-container {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      position: relative;
     }
-    .logo img {
-      height: 100px; /* Updated logo size */
-    }
-    .header-right {
-      display: flex;
-      align-items: center;
+    /* Left: Hamburger */
+    .header-left {
+      flex: 1;
     }
     .menu-toggle {
       background: none;
@@ -34,24 +29,42 @@
       color: #fff;
       font-size: 32px;
       cursor: pointer;
-      /* Always show the hamburger icon */
+    }
+    /* Center: Logo */
+    .logo {
+      flex: 2;
+      text-align: center;
+    }
+    .logo img {
+      height: 100px; /* Updated logo size */
+    }
+    /* Right: Login/Signup stacked vertically */
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
     .header-buttons a {
-      margin-left: 10px;
       text-decoration: none;
       color: #fff;
       border: 1px solid #fff;
       padding: 8px 16px;
       border-radius: 20px;
+      margin-bottom: 5px;
     }
-    /* Dropdown overlay menu */
+    /* Dropdown overlay menu (for mobile) */
     .dropdown-menu {
       display: none;
       flex-direction: column;
       background: rgba(0,46,93,0.95); /* Dark overlay */
       width: 100%;
       position: absolute;
-      top: 130px; /* Just below the header */
+      top: 130px; /* just below header */
       left: 0;
     }
     .dropdown-menu a {
@@ -63,7 +76,7 @@
     .dropdown-menu a:hover {
       background: #004080;
     }
-    /* Page-specific styles for index */
+    /* --- Page Styles for Index --- */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -110,13 +123,42 @@
       font-size: 14px;
       margin-top: 40px;
     }
+    /* --- Mobile Overrides --- */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-wrap: wrap;
+      }
+      .logo {
+        order: 2;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+      }
+      .header-left {
+        order: 1;
+      }
+      .header-right {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .header-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      /* Show hamburger icon if not already visible */
+      .menu-toggle {
+        display: block;
+      }
+    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
       toggle.addEventListener("click", function() {
-        // Toggle the dropdown overlay menu vertically
+        // Toggle the dropdown overlay vertically
         if (dropdown.style.display === "flex") {
           dropdown.style.display = "none";
         } else {
@@ -130,16 +172,17 @@
   <!-- COMMON HEADER -->
   <header>
     <div class="header-container">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Spare Hands Logo">
-      </a>
-      <div class="header-right">
-        <!-- Hamburger icon on far right -->
+      <div class="header-left">
         <button class="menu-toggle">&#9776;</button>
       </div>
-      <div class="header-buttons">
-        <a href="login.html" class="btn btn-login">Login</a>
-        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
+      </div>
+      <div class="header-right">
+        <div class="header-buttons">
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        </div>
       </div>
     </div>
     <!-- Dropdown overlay menu -->
