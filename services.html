@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services – Spare Hands</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sort-options {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sort-options select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- COMMON HEADER -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Spare Hands Logo">
+      </a>
+      <button class="menu-toggle">Menu</button>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn btn-login">Login</a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search for services...">
+    </div>
+    <div class="sort-options">
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option value="nearest">Nearest</option>
+        <option value="ratings">Ratings</option>
+      </select>
+    </div>
+    <div class="profile-grid">
+      <!-- List all service providers (using our profiles from profile.html) -->
+      <a href="profile.html?id=1" class="profile-link">
+        <div class="profile-card">
+          <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
+          <h3>Dirty Deeds Cleaning</h3>
+          <p><strong>Service:</strong> Cleaning</p>
+        </div>
+      </a>
+      <a href="profile.html?id=2" class="profile-link">
+        <div class="profile-card">
+          <img src="images/cleaning-2.png" alt="Sparkle & Shine Cleaners">
+          <h3>Sparkle & Shine Cleaners</h3>
+          <p><strong>Service:</strong> Cleaning</p>
+        </div>
+      </a>
+      <a href="profile.html?id=9" class="profile-link">
+        <div class="profile-card">
+          <img src="images/emergency-1.png" alt="Rapid Repair Co.">
+          <h3>Rapid Repair Co.</h3>
+          <p><strong>Service:</strong> Repairs</p>
+        </div>
+      </a>
+      <a href="profile.html?id=14" class="profile-link">
+        <div class="profile-card">
+          <img src="images/travelagent-1.png" alt="GlobeTrotter Travel">
+          <h3>GlobeTrotter Travel</h3>
+          <p><strong>Service:</strong> Travel</p>
+        </div>
+      </a>
+      <a href="profile.html?id=16" class="profile-link">
+        <div class="profile-card">
+          <img src="images/legal-1.png" alt="LawWise Consulting">
+          <h3>LawWise Consulting</h3>
+          <p><strong>Service:</strong> Legal</p>
+        </div>
+      </a>
+      <a href="profile.html?id=23" class="profile-link">
+        <div class="profile-card">
+          <img src="images/flowers-1.png" alt="Floral Finesse">
+          <h3>Floral Finesse</h3>
+          <p><strong>Service:</strong> Flowers</p>
+        </div>
+      </a>
+      <!-- Add more providers as desired -->
+    </div>
+  </div>
+  
+  <div class="footer">
+    &copy; 2025 Spare Hands. All Rights Reserved.
+  </div>
+  
+  <script>
+    document.getElementById("sort").addEventListener("change", function() {
+      alert("Sort functionality not implemented.");
+    });
+  </script>
+</body>
+</html>
