@@ -1,20 +1,20 @@
 <header>
   <div class="header-container">
-    <!-- Auth Buttons on the Far Left -->
-    <div class="auth-buttons">
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
+    <!-- Left: Auth Buttons -->
+    <div class="auth-left">
+      <a href="login.html" class="auth-btn">Login</a>
+      <a href="signup.html" class="auth-btn">Sign Up</a>
     </div>
-    <!-- Centered Logo -->
+    <!-- Center: Logo -->
     <div class="logo">
       <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
     </div>
-    <!-- Hamburger Menu on the Far Right -->
-    <div class="hamburger-container">
+    <!-- Right: Hamburger Menu -->
+    <div class="menu-right">
       <button class="hamburger">&#9776;</button>
     </div>
   </div>
-  <!-- Dropdown Menu (appears when hamburger is clicked) -->
+  <!-- Dropdown Menu -->
   <nav class="dropdown-menu">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
@@ -25,6 +25,17 @@
 </header>
 
 <style>
+  /* Basic Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #F5F5F5;
+    color: #333;
+  }
   /* Header Styles */
   header {
     background: #002E5D;
@@ -35,19 +46,19 @@
   }
   .header-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: nowrap;
   }
   /* Left: Auth Buttons */
-  .auth-buttons {
+  .auth-left {
     width: 150px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
   }
-  .auth-buttons a {
+  .auth-btn {
     text-decoration: none;
     color: #fff;
     border: 1px solid #fff;
@@ -63,7 +74,7 @@
     height: 100px;
   }
   /* Right: Hamburger */
-  .hamburger-container {
+  .menu-right {
     width: 80px;
     text-align: right;
   }
@@ -81,7 +92,7 @@
     background: #002E5D;
     width: 100%;
     position: absolute;
-    top: 70px; /* Adjust this value if needed */
+    top: 70px; /* Adjust as needed */
     right: 0;
     left: 0;
   }
@@ -94,16 +105,16 @@
   .dropdown-menu a:hover {
     background: #004080;
   }
-  /* Responsive: On small screens, stack everything centered */
+  /* Responsive: On small screens, everything centers */
   @media (max-width: 768px) {
     .header-container {
       flex-wrap: wrap;
     }
-    .auth-buttons, .logo, .hamburger-container {
+    .auth-left, .logo, .menu-right {
       width: 100%;
       text-align: center;
     }
-    .auth-buttons {
+    .auth-left {
       flex-direction: row;
       justify-content: center;
       gap: 10px;
@@ -116,59 +127,10 @@
     var hamburger = document.querySelector('.hamburger');
     var dropdown = document.querySelector('.dropdown-menu');
     hamburger.addEventListener('click', function(){
-      // Toggle display between "flex" and "none"
       dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
     });
   });
 </script>
-<body>
-  <!-- HEADER (Place this at the top of every page's body) -->
-  <header>
-    <div class="header-container">
-      <div class="header-left">
-        <button class="hamburger">&#9776;</button>
-      </div>
-      <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
-      </div>
-      <div class="auth-buttons">
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
-      </div>
-    </div>
-    <nav class="dropdown-menu">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-<body>
-  <!-- COMMON HEADER (copy EXACTLY as shown below) -->
-  <header>
-    <div class="header-container">
-      <div class="header-left">
-        <button class="menu-toggle">&#9776;</button>
-      </div>
-      <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
-      </div>
-      <div class="header-right">
-        <div class="header-buttons">
-          <a href="login.html" class="btn btn-login">Login</a>
-          <a href="signup.html" class="btn btn-signup">Sign Up</a>
-        </div>
-      </div>
-    </div>
-    <nav class="dropdown-menu">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
   
   <!-- Page Content -->
   <div class="container">
