@@ -27,7 +27,7 @@
     .menu-toggle {
       background: none;
       border: none;
-      color: #40e0d0; /* Changed to turquoise */
+      color: #40e0d0; /* Turquoise */
       font-size: 32px;
       cursor: pointer;
     }
@@ -37,9 +37,9 @@
       text-align: center;
     }
     .logo img {
-      height: 100px; /* Updated logo size */
+      height: 100px;
     }
-    /* Right: Login/Signup stacked vertically */
+    /* Right: Login/Signup */
     .header-right {
       flex: 1;
       display: flex;
@@ -53,19 +53,19 @@
     .header-buttons a {
       text-decoration: none;
       color: #002E5D;
-      background: #40e0d0; /* Changed to turquoise */
+      background: #40e0d0; /* Turquoise */
       border: 1px solid #40e0d0;
       padding: 8px 16px;
       border-radius: 20px;
       margin-bottom: 5px;
-      font-weight: bold; /* Text bold */
+      font-weight: bold;
     }
     /* Dropdown overlay menu */
     .dropdown-menu {
       display: none;
       flex-direction: column;
       background: rgba(0,46,93,0.95);
-      width: 150px; /* Reduced width */
+      width: 150px;
       position: absolute;
       top: 130px;
       left: 0;
@@ -76,7 +76,7 @@
       border-top: 1px solid #004080;
       color: #40e0d0;
       text-decoration: none;
-      font-weight: bold; /* Text bold */
+      font-weight: bold;
     }
     .dropdown-menu a:hover {
       background: #004080;
@@ -86,37 +86,6 @@
       max-width: 1200px;
       margin: auto;
       padding: 20px;
-    }
-    /* Featured Sections */
-    .featured-section h2 {
-      color: #002E5D;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .featured-item {
-      background: #FFF;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 15px;
-      text-align: center;
-      border-bottom: 3px solid #002E5D;
-      transition: transform 0.2s ease;
-    }
-    .featured-item:hover {
-      transform: translateY(-5px);
-    }
-    .footer {
-      background: #002E5D;
-      color: #FFF;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
     }
     /* Marketplace Styles */
     .grid-2 {
@@ -147,6 +116,14 @@
       font-size: 18px;
       color: #002E5D;
     }
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -160,6 +137,37 @@
         { id: "101", provider: "Blueberry Bliss Farm", category: "Fruit", name: "Organic Blueberries", image: "images/blueberries-1.png", price: "$4.99/lb" },
         { id: "102", provider: "Berry Best Produce", category: "Fruit", name: "Fresh Strawberries", image: "images/strawberries.png", price: "$3.99/lb" },
         { id: "103", provider: "The Blueberry Basket", category: "Fruit", name: "Mixed Berries", image: "images/mixberries.png", price: "$5.99/lb" },
-        { id: "104", provider: "Sofa Central", category: "Furniture", name: "Modern Sofa", image: "
+        { id: "104", provider: "Sofa Central", category: "Furniture", name: "Modern Sofa", image: "images/marketcouches-2.png", price: "$499" },
+        { id: "105", provider: "Luxe Loungers", category: "Furniture", name: "Designer Chair", image: "images/marketcouches-3.png", price: "$299" },
+        { id: "106", provider: "Comfy Living", category: "Furniture", name: "Vintage Coffee Table", image: "images/marketcouches-1.png", price: "$199" },
+        { id: "107", provider: "Floral Finesse", category: "Flowers", name: "Rose Bouquet", image: "images/flowers-1.png", price: "$29.99" },
+        { id: "108", provider: "Garden Bloomers", category: "Flowers", name: "Tulip Arrangement", image: "images/flowers-2.png", price: "$24.99" }
+      ];
+
+      function renderMarketplace() {
+        var container = document.getElementById("inventory-container");
+        if (!container) return; // Prevent errors if container is missing
+        var html = "";
+        inventoryItems.forEach(function(item) {
+          html += '<a href="item.html?item=' + item.id + '" class="profile-link">';
+          html += '<div class="inventory-item">';
+          html += '<img src="' + item.image + '" alt="' + item.name + '">';
+          html += '<h3>' + item.name + '</h3>';
+          html += '<p><strong>Provider:</strong> ' + item.provider + '</p>';
+          html += '<p><strong>Price:</strong> ' + item.price + '</p>';
+          html += '</div></a>';
+        });
+        container.innerHTML = html;
+      }
+
+      renderMarketplace();
+    });
+  </script>
+</head>
+<body>
+  <!-- COMMON HEADER -->
+  <header>
+    <div class="header-container">
+
 ::contentReference[oaicite:0]{index=0}
  
