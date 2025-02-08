@@ -18,6 +18,7 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       text-align: center;
       margin-top: 40px;
+      margin-bottom: 40px;
     }
     .profile-header img {
       width: 150px;
@@ -35,7 +36,7 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-top: 20px;
+      margin-bottom: 60px;
     }
     .profile-details h3 {
       color: #002E5D;
@@ -115,6 +116,7 @@
     </nav>
   </header>
   
+  <!-- Profile Content -->
   <div class="container">
     <div id="profile-content"></div>
   </div>
@@ -124,7 +126,7 @@
   </div>
   
   <script>
-    // Helper to get query parameter
+    // Helper: Get query parameter
     function getParameterByName(name, url) {
       if (!url) url = window.location.href;
       name = name.replace(/[\[\]]/g, '\\$&');
@@ -135,7 +137,7 @@
       return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
     
-    // Profiles JSON (IDs 1 to 24)
+    // All profiles (IDs 1 to 24)
     var profiles = {
       "1": {
         "title": "Dirty Deeds Cleaning",
@@ -481,7 +483,6 @@
       document.getElementById("profile-content").innerHTML = "<p>Profile not found.</p>";
     }
     
-    // Helper to get query parameter
     function getParameterByName(name, url) {
       if (!url) url = window.location.href;
       name = name.replace(/[\[\]]/g, '\\$&');
