@@ -6,16 +6,9 @@
   <title>Services – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Common header styles are assumed (see index.html) */
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-    .search-bar {
-      text-align: center;
-      margin: 60px 0;
-    }
+    /* Common Header Styles (same as above) */
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    .search-bar { text-align: center; margin: 60px 0; }
     .search-bar input {
       width: 80%;
       max-width: 600px;
@@ -38,10 +31,7 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-    .profile-link {
-      display: block;
-      text-decoration: none;
-    }
+    .profile-link { display: block; text-decoration: none; }
     .profile-card {
       background: #FFF;
       border-radius: 10px;
@@ -50,42 +40,28 @@
       transition: transform 0.2s ease;
       border-bottom: 3px solid #002E5D;
     }
-    .profile-card:hover {
-      transform: translateY(-5px);
-    }
+    .profile-card:hover { transform: translateY(-5px); }
     .profile-card img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 10px;
     }
-    .profile-card h3 {
-      margin: 10px 0 5px;
-      font-size: 20px;
-      color: #002E5D;
-    }
-    .profile-card p {
-      margin: 5px 0;
-      font-size: 14px;
-      color: #4A4A4A;
-    }
-    .footer {
-      background: #002E5D;
-      color: #FFF;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
+    .profile-card h3 { margin: 10px 0 5px; font-size: 20px; color: #002E5D; }
+    .profile-card p { margin: 5px 0; font-size: 14px; color: #4A4A4A; }
+    .footer { background: #002E5D; color: #FFF; padding: 20px; text-align: center; font-size: 14px; margin-top: 60px; }
+    @media (max-width:768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left, .header-right { flex: 1 100%; text-align: center; }
     }
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function(){
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
-      toggle.addEventListener("click", function() {
+      toggle.addEventListener("click", function(){
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
       });
       
-      // Service providers data for services page
       var serviceProviders = [
         { id: "1", image: "images/cleaning-1.png", title: "Dirty Deeds Cleaning", service: "Cleaning", rating: 4 },
         { id: "2", image: "images/cleaning-2.png", title: "Sparkle & Shine Cleaners", service: "Cleaning", rating: 5 },
@@ -113,16 +89,12 @@
       // Initial render
       renderProviders(serviceProviders);
       
-      // Sort functionality
-      document.getElementById("sort").addEventListener("change", function() {
+      document.getElementById("sort").addEventListener("change", function(){
         var sortValue = this.value;
         var sorted = serviceProviders.slice();
-        if(sortValue === "ratings") {
-          sorted.sort(function(a, b) { return b.rating - a.rating; });
-        } else if(sortValue === "nearest") {
-          // For demo, we assume default order is 'nearest'
-          sorted = serviceProviders;
-        }
+        if (sortValue === "ratings") {
+          sorted.sort(function(a, b){ return b.rating - a.rating; });
+        } // else default order is "nearest"
         renderProviders(sorted);
       });
     });
@@ -135,13 +107,13 @@
       <div class="header-left">
         <button class="menu-toggle">&#9776;</button>
       </div>
-      <div class="logo" style="text-align: center; flex:2;">
+      <div class="logo" style="text-align:center;">
         <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
       </div>
       <div class="header-right">
         <div class="header-buttons">
-          <a href="login.html" class="btn btn-login">Login</a>
-          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+          <a href="login.html">Login</a>
+          <a href="signup.html">Sign Up</a>
         </div>
       </div>
     </div>
@@ -154,7 +126,7 @@
     </nav>
   </header>
   
-  <!-- Services Page Content -->
+  <!-- Services Content -->
   <div class="container">
     <div class="search-bar">
       <input type="text" placeholder="Search for services...">
@@ -167,7 +139,7 @@
       </select>
     </div>
     <div class="profile-grid">
-      <!-- Provider cards rendered by JavaScript -->
+      <!-- Provider cards will be rendered by JavaScript -->
     </div>
   </div>
   
