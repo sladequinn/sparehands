@@ -16,10 +16,12 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 60px;
     }
     .form-container h2 {
       color: #002E5D;
       text-align: center;
+      margin-bottom: 20px;
     }
     .form-container input,
     .form-container select {
@@ -39,12 +41,20 @@
       cursor: pointer;
       font-size: 16px;
     }
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 60px;
+    }
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function(){
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
-      toggle.addEventListener("click", function() {
+      toggle.addEventListener("click", function(){
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
       });
     });
@@ -76,6 +86,7 @@
     </nav>
   </header>
   
+  <!-- Signup Form Content -->
   <div class="container">
     <div class="form-container">
       <h2>Sign Up</h2>
