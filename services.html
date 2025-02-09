@@ -143,15 +143,13 @@
       font-size: 14px;
       margin-top: 60px;
     }
-    @media (max-width:768px) {
-      .header-container {
-        flex-wrap: wrap;
-      }
-      .header-left,
-      .header-right {
-        flex: 1 100%;
-        text-align: center;
-      }
+@media (max-width: 768px) {
+  .header-container { flex-wrap: wrap; }
+  .header-left { order: 1; }
+  .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+  .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+  .header-buttons { flex-direction: column; align-items: flex-end; }
+}
     }
   </style>
   <script>
