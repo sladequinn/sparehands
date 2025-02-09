@@ -6,7 +6,7 @@
   <title>Spare Hands – Marketplace</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Header Styles (matching index exactly) --- */
+    /* === COMMON HEADER (exactly as in index) === */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -20,9 +20,7 @@
       justify-content: space-between;
       position: relative;
     }
-    .header-left {
-      flex: 1;
-    }
+    .header-left { flex: 1; }
     .menu-toggle {
       background: none;
       border: none;
@@ -30,13 +28,8 @@
       font-size: 32px;
       cursor: pointer;
     }
-    .logo {
-      flex: 2;
-      text-align: center;
-    }
-    .logo img {
-      height: 100px;
-    }
+    .logo { flex: 2; text-align: center; }
+    .logo img { height: 100px; }
     .header-right {
       flex: 1;
       display: flex;
@@ -74,21 +67,35 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .dropdown-menu a:hover {
-      background: #004080;
+    .dropdown-menu a:hover { background: #004080; }
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+      .header-buttons { flex-direction: column; align-items: flex-end; }
     }
-    /* --- Page Styles --- */
+    
+    /* === PAGE STYLES === */
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 20px;
     }
-    h2 {
-      color: #002E5D;
+    /* Search bar for goods */
+    .search-bar {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 60px 0 30px;
     }
-    /* Marketplace Grid */
+    .search-bar input {
+      width: 80%;
+      max-width: 600px;
+      padding: 15px;
+      font-size: 18px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+    }
+    /* Marketplace grid: two columns */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -104,9 +111,7 @@
       border-bottom: 3px solid #002E5D;
       transition: transform 0.2s ease;
     }
-    .inventory-item:hover {
-      transform: translateY(-5px);
-    }
+    .inventory-item:hover { transform: translateY(-5px); }
     .inventory-item img {
       width: 100%;
       border-radius: 10px;
@@ -116,6 +121,11 @@
       margin: 10px 0 5px;
       font-size: 18px;
       color: #002E5D;
+    }
+    .inventory-item p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #4A4A4A;
     }
     .footer {
       background: #002E5D;
@@ -133,8 +143,9 @@
       toggle.addEventListener("click", function() {
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
       });
-
-      var inventoryItems = [
+      
+      // Full inventory items array
+      var allItems = [
         { id: "101", provider: "Blueberry Bliss Farm", category: "Fruit", name: "Organic Blueberries", image: "images/blueberries-1.png", price: "$4.99/lb" },
         { id: "102", provider: "Berry Best Produce", category: "Fruit", name: "Fresh Strawberries", image: "images/strawberries.png", price: "$3.99/lb" },
         { id: "103", provider: "The Blueberry Basket", category: "Fruit", name: "Mixed Berries", image: "images/mixberries.png", price: "$5.99/lb" },
@@ -144,12 +155,11 @@
         { id: "107", provider: "Floral Finesse", category: "Flowers", name: "Rose Bouquet", image: "images/flowers-1.png", price: "$29.99" },
         { id: "108", provider: "Garden Bloomers", category: "Flowers", name: "Tulip Arrangement", image: "images/flowers-2.png", price: "$24.99" }
       ];
-
-      function renderMarketplace() {
+      
+      function renderMarketplace(items) {
         var container = document.getElementById("inventory-container");
-        if (!container) return;
         var html = "";
-        inventoryItems.forEach(function(item) {
+        items.forEach(function(item) {
           html += '<a href="item.html?item=' + item.id + '" class="profile-link">';
           html += '<div class="inventory-item">';
           html += '<img src="' + item.image + '" alt="' + item.name + '">';
@@ -160,12 +170,24 @@
         });
         container.innerHTML = html;
       }
-
-      renderMarketplace();
+      
+      // Initially render all items
+      renderMarketplace(allItems);
+      
+      // Add search filtering functionality
+      var searchInput = document.getElementById("goods-search");
+      searchInput.addEventListener("keyup", function() {
+        var query = searchInput.value.toLowerCase();
+        var filtered = allItems.filter(function(item) {
+          return item.name.toLowerCase().indexOf(query) > -1;
+        });
+        renderMarketplace(filtered);
+      });
     });
   </script>
 </head>
 <body>
+  <!-- COMMON HEADER (exactly as in index) -->
   <header>
     <div class="header-container">
       <div class="header-left">
@@ -176,8 +198,8 @@
       </div>
       <div class="header-right">
         <div class="header-buttons">
-          <a href="login.html">Login</a>
-          <a href="signup.html">Sign Up</a>
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
         </div>
       </div>
     </div>
@@ -189,26 +211,17 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-
-    <!-- Services Content -->
+  
   <div class="container">
+    <!-- New Search Bar for Goods -->
     <div class="search-bar">
-      <input type="text" placeholder="Search for Goods...">
+      <input type="text" id="goods-search" placeholder="Search for goods...">
     </div>
-    <div class="sort-options">
-      <label for="sort">Sort by:</label>
-      <select id="sort">
-        <option value="nearest">Nearest</option>
-        <option value="ratings">Ratings</option>
-      </select>
-    </div>
-    <div class="profile-grid">
-
-  <div class="container">
-    <h2>Marketplace</h2>
     <div id="inventory-container" class="grid-2"></div>
   </div>
-
-  <footer class="footer">© 2025 Spare Hands</footer>
+  
+  <div class="footer">
+    &copy; 2025 Spare Hands. All Rights Reserved.
+  </div>
 </body>
 </html>
