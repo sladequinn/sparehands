@@ -75,8 +75,7 @@
       .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
       .header-buttons { flex-direction: column; align-items: flex-end; }
     }
-    
-    /* Global: Remove underline on all our links */
+    /* Global: Remove underline on all links */
     a { text-decoration: none; }
     
     /* === PAGE CONTENT === */
@@ -207,89 +206,350 @@
       else return "";
     }
     
-    // Full profiles object (IDs 1–24); include all profiles as before…
+    // FULL profiles object (IDs 1–24)
     var profiles = {
-    "1": { "title": "Dirty Deeds Cleaning", "service": "Home & Commercial Cleaning", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/cleaning-1.png", "about": "Dirty Deeds Cleaning tackles your messiest problems—from dog accidents to major commercial cleanups. Our team is available 24/7 to ensure that no dirt goes unchallenged.", "services": ["Emergency Cleanup", "Deep Cleaning", "Commercial & Residential Cleaning", "Custom Cleaning Solutions"], "phone": "(519) 555-1234", "email": "info@dirtydeedscleaning.ca" },
-      "2": { "title": "Sparkle & Shine Cleaners", "service": "Deep Cleaning", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/cleaning-2.png", "about": "Sparkle & Shine Cleaners delivers high-quality deep cleaning services with an eye for detail. We transform your space into a sparkling clean environment.", "services": ["Deep Cleaning Sessions", "Window & Surface Cleaning", "Custom Cleaning Packages"], "phone": "(519) 555-5678", "email": "info@sparkleshine.ca" },
-      "3": { "title": "Grime Busters", "service": "Emergency Cleanup", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/cleaning-3.png", "about": "Grime Busters specializes in emergency cleanups for those unexpected disasters. We’re on call to restore order when things get messy.", "services": ["Rapid Emergency Cleanup", "Disaster Recovery Cleaning", "Post-Event Cleanup"], "phone": "(519) 555-9012", "email": "contact@grimebusters.ca" },
-      "4": { "title": "Pristine Clean Crew", "service": "Residential & Commercial Cleaning", "location": "Kitchener, ON", "rating": "★★★☆☆", "image": "images/cleaning-4.png", "about": "Pristine Clean Crew offers reliable cleaning services that guarantee a neat and orderly environment for your home or business.", "services": ["Scheduled Cleaning", "One-Time Deep Cleaning", "Office & Home Maintenance"], "phone": "(519) 555-3456", "email": "info@pristinecleancrew.ca" },
-      "5": { "title": "Blueberry Bliss Farm", "service": "Fresh Blueberries", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/blueberries-1.png", "about": "Blueberry Bliss Farm offers organic, fresh blueberries grown locally with sustainable practices. Enjoy our produce delivered right to your table.", "services": ["Fresh Blueberry Sales", "Farm Tours", "Organic Produce Delivery"], "phone": "(519) 555-7890", "email": "info@blueberryblissfarm.ca", "inventoryItems": [ { "name": "Organic Blueberries", "price": "$4.99/lb", "image": "images/blueberries-1.png" }, { "name": "Fresh Strawberries", "price": "$3.99/lb", "image": "images/blueberries-2.png" } ] },
-      "6": { "title": "Berry Best Produce", "service": "Local Fruit Supplier", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/blueberries-2.png", "about": "Berry Best Produce is your trusted local supplier for fresh, handpicked fruit delivered directly from our farm to your home.", "services": ["Daily Fruit Deliveries", "Seasonal Produce Boxes", "Farm-to-Table Partnerships"], "phone": "(519) 555-2345", "email": "contact@berrybestproduce.ca", "inventoryItems": [ { "name": "Fresh Strawberries", "price": "$3.99/lb", "image": "images/blueberries-2.png" }, { "name": "Mixed Berries", "price": "$5.99/lb", "image": "images/blueberries-3.png" } ] },
-      "7": { "title": "The Blueberry Basket", "service": "Farm Fresh Produce", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/blueberries-3.png", "about": "The Blueberry Basket delivers handpicked blueberries in a charming, market-style presentation with personalized service.", "services": ["Handpicked Blueberry Sales", "Customized Produce Baskets", "Local Farmer’s Market Delivery"], "phone": "(519) 555-3457", "email": "orders@theblueberrybasket.ca", "inventoryItems": [ { "name": "Mixed Berries", "price": "$5.99/lb", "image": "images/blueberries-3.png" } ] },
-      "8": { "title": "Blue Haven Farms", "service": "Organic Blueberries", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/blueberries-4.png", "about": "At Blue Haven Farms, we pride ourselves on sustainable farming. Our organic blueberries are grown with care and delivered fresh.", "services": ["Organic Blueberry Sales", "Farm Tours", "Local Produce Delivery"], "phone": "(519) 555-4567", "email": "info@bluehavenfarms.ca", "inventoryItems": [ { "name": "Organic Blueberries", "price": "$4.99/lb", "image": "images/blueberries-4.png" } ] },
-      "9": { "title": "Rapid Repair Co.", "service": "Emergency Home Repairs", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/emergency-1.png", "about": "Rapid Repair Co. provides fast, reliable emergency home repair services. We’re on call 24/7 to handle any repair emergency quickly and efficiently.", "services": ["Emergency Plumbing & Electrical Repairs", "Structural & Appliance Repairs", "24/7 On-Call Service"], "phone": "(519) 555-6789", "email": "service@rapidrepairco.ca" },
-      "10": { "title": "Fix-It Fast", "service": "On-Demand Repairs", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/emergency-2.png", "about": "Fix-It Fast is known for its quick response and efficient repair solutions for your home and office.", "services": ["General Home Repairs", "Electrical & Plumbing Fixes", "Appliance Repairs"], "phone": "(519) 555-7891", "email": "support@fixitfast.ca" },
-      "11": { "title": "Rescue Repairs", "service": "24/7 Repair Services", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/emergency-3.png", "about": "Rescue Repairs is available around the clock to provide repair services when you need them most.", "services": ["24/7 Home Repairs", "Emergency Service Calls", "Rapid On-Site Repairs"], "phone": "(519) 555-8901", "email": "emergency@rescuerepairs.ca" },
-      "12": { "title": "JumpStart Pros", "service": "Car Jump Starts", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/jumpstart-1.png", "about": "JumpStart Pros provides reliable and quick car jump start services. We ensure your vehicle gets the energy it needs in a pinch.", "services": ["On-Demand Car Jump Starts", "Roadside Assistance"], "phone": "(519) 555-9012", "email": "support@jumpstartpros.ca" },
-      "13": { "title": "Roadside Rescuers", "service": "Emergency Roadside Assistance", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/jumpstart-2.png", "about": "Roadside Rescuers provide prompt and professional assistance for your roadside emergencies.", "services": ["Car Jump Starts", "Tire Changes", "Emergency Fuel Delivery"], "phone": "(519) 555-9013", "email": "help@roadrescuers.ca" },
-      "14": { "title": "GlobeTrotter Travel", "service": "Travel Planning & Booking", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/travelagent-1.png", "about": "GlobeTrotter Travel offers expert travel planning and booking services to create unforgettable travel experiences.", "services": ["Custom Travel Itineraries", "Flight & Hotel Booking", "Travel Consultation"], "phone": "(519) 555-0123", "email": "info@globetrottertravel.ca" },
-      "15": { "title": "Voyage Ventures", "service": "Customized Itineraries", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/travelagent-2.png", "about": "Voyage Ventures specializes in crafting personalized travel itineraries tailored to your interests and budget.", "services": ["Custom Itinerary Planning", "Travel Consultation", "Exclusive Deals"], "phone": "(519) 555-0456", "email": "hello@voyageventures.ca" },
-      "16": { "title": "LawWise Consulting", "service": "Legal Advice & Consultation", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/legal-1.png", "about": "LawWise Consulting offers professional legal advice and consultation services to help you navigate legal challenges.", "services": ["Legal Consultation", "Contract Review", "Corporate Legal Services"], "phone": "(519) 555-1122", "email": "info@lawwiseconsulting.ca" },
-      "17": { "title": "Justice Junction", "service": "On-Demand Legal Support", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/legal-2.png", "about": "Justice Junction provides quick and accessible legal support for individuals and small businesses.", "services": ["On-Demand Legal Advice", "Contract Review", "Dispute Resolution"], "phone": "(519) 555-2233", "email": "support@justicejunction.ca" },
-      "18": { "title": "Comfy Living", "service": "Pre-owned Couches", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/couches-1.png", "about": "Comfy Living offers quality pre-owned couches at affordable prices. Our selection is carefully curated to provide both style and comfort.", "services": ["Pre-owned Couch Sales", "Home Delivery", "Furniture Consultation"], "phone": "(519) 555-3344", "email": "info@comfyliving.ca" },
-      "19": { "title": "Sofa Central", "service": "Couch Sales & Delivery", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/couches-2.png", "about": "Sofa Central is your one-stop shop for stylish, comfortable couches with hassle-free delivery.", "services": ["New & Pre-owned Couch Sales", "Delivery & Setup", "Furniture Consultation"], "phone": "(519) 555-4455", "email": "info@sofacentral.ca" },
-      "20": { "title": "Luxe Loungers", "service": "Designer Couches", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/couches-3.png", "about": "Luxe Loungers offers high-end, designer couches for the discerning buyer. We combine elegance with comfort.", "services": ["Designer Couch Sales", "Custom Upholstery", "White-Glove Delivery"], "phone": "(519) 555-5566", "email": "premium@luxeloungers.ca" },
-      "21": { "title": "Pool Pals", "service": "Game Partner Matching", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/pool-1.png", "about": "Pool Pals connects you with the perfect game partner for a fun and competitive pool match.", "services": ["Game Partner Matching", "Pool Tournament Organizing", "Social Billiards Meetups"], "phone": "(519) 555-6677", "email": "play@poolpals.ca" },
-      "22": { "title": "Cue Crew", "service": "Pool & Billiards Meetups", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/pool-2.png", "about": "Cue Crew organizes casual and competitive pool meetups for enthusiasts.", "services": ["Pool Meetup Scheduling", "Billiards Tournaments", "Social Gaming Events"], "phone": "(519) 555-7788", "email": "info@cuecrew.ca" },
-      "23": { "title": "Floral Finesse", "service": "Flower Arrangements", "location": "Kitchener, ON", "rating": "★★★★★", "image": "images/flowers-1.png", "about": "Floral Finesse creates exquisite flower arrangements for every occasion.", "services": ["Custom Bouquets", "Event Floral Design"], "phone": "(519) 555-3345", "email": "info@floralfinesse.ca", "inventoryItems": [ { "name": "Rose Bouquet", "price": "$29.99", "image": "images/flowers-1.png" }, { "name": "Tulip Arrangement", "price": "$24.99", "image": "images/flowers-2.png" } ] },
-      "24": { "title": "Garden Bloomers", "service": "Garden & Bouquet Design", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/flowers-2.png", "about": "Garden Bloomers specializes in designing beautiful gardens and bouquets that brighten your day.", "services": ["Garden Design", "Bouquet Customization"], "phone": "(519) 555-3346", "email": "contact@gardenbloomers.ca", "inventoryItems": [ { "name": "Seasonal Bouquet", "price": "$24.99", "image": "images/flowers-2.png" } ] 
-            };
-    
-    function renderProfile(data) {
-      var container = document.getElementById("profile-content");
-      var html = "";
-      html += '<div class="profile-header">';
-      html += '<img src="' + data.image + '" alt="' + data.title + '">';
-      html += '<h2>' + data.title + '</h2>';
-      html += '<p><strong>Service:</strong> ' + data.service + '</p>';
-      html += '<p><strong>Location:</strong> ' + data.location + '</p>';
-      html += '<p><strong>Rating:</strong> ' + data.rating + '</p>';
-      html += '</div>';
-      html += '<div class="profile-details">';
-      html += '<h3>About Us</h3>';
-      html += '<p>' + data.about + '</p>';
-      html += '<h3>Services Offered</h3>';
-      html += '<ul>';
-      data.services.forEach(function(item) {
-        html += '<li>' + item + '</li>';
-      });
-      html += '</ul>';
-      if(data.inventoryItems) {
-        html += '<h3>Inventory</h3>';
-        html += '<div class="inventory-list">';
-        data.inventoryItems.forEach(function(item) {
-          var itemId = getItemId(item.name);
-          html += '<a href="item.html?item=' + itemId + '" class="inventory-link" style="text-decoration:none;">';
-          html += '<div class="inventory-item">';
-          html += '<img src="' + item.image + '" alt="' + item.name + '">';
-          html += '<h4>' + item.name + '</h4>';
-          html += '<p><strong>Price:</strong> ' + item.price + '</p>';
-          html += '</div>';
-          html += '</a>';
-        });
-        html += '</div>';
+      "1": {
+         "title": "Dirty Deeds Cleaning",
+         "service": "Home & Commercial Cleaning",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/cleaning-1.png",
+         "about": "Dirty Deeds Cleaning tackles your messiest problems—from dog accidents to major commercial cleanups. Our team is available 24/7 to ensure that no dirt goes unchallenged.",
+         "services": ["Emergency Cleanup", "Deep Cleaning", "Commercial & Residential Cleaning", "Custom Cleaning Solutions"],
+         "phone": "(519) 555-1234",
+         "email": "info@dirtydeedscleaning.ca"
+      },
+      "2": {
+         "title": "Sparkle & Shine Cleaners",
+         "service": "Deep Cleaning",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/cleaning-2.png",
+         "about": "Sparkle & Shine Cleaners delivers high-quality deep cleaning services with an eye for detail. We transform your space into a sparkling clean environment.",
+         "services": ["Deep Cleaning Sessions", "Window & Surface Cleaning", "Custom Cleaning Packages"],
+         "phone": "(519) 555-5678",
+         "email": "info@sparkleshine.ca"
+      },
+      "3": {
+         "title": "Grime Busters",
+         "service": "Emergency Cleanup",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/cleaning-3.png",
+         "about": "Grime Busters specializes in emergency cleanups for those unexpected disasters. We’re on call to restore order when things get messy.",
+         "services": ["Rapid Emergency Cleanup", "Disaster Recovery Cleaning", "Post-Event Cleanup"],
+         "phone": "(519) 555-9012",
+         "email": "contact@grimebusters.ca"
+      },
+      "4": {
+         "title": "Pristine Clean Crew",
+         "service": "Residential & Commercial Cleaning",
+         "location": "Kitchener, ON",
+         "rating": "★★★☆☆",
+         "image": "images/cleaning-4.png",
+         "about": "Pristine Clean Crew offers reliable cleaning services that guarantee a neat and orderly environment for your home or business.",
+         "services": ["Scheduled Cleaning", "One-Time Deep Cleaning", "Office & Home Maintenance"],
+         "phone": "(519) 555-3456",
+         "email": "info@pristinecleancrew.ca"
+      },
+      "5": {
+         "title": "Blueberry Bliss Farm",
+         "service": "Fresh Blueberries",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/blueberries-1.png",
+         "about": "Blueberry Bliss Farm offers organic, fresh blueberries grown locally with sustainable practices. Enjoy our produce delivered right to your table.",
+         "services": ["Fresh Blueberry Sales", "Farm Tours", "Organic Produce Delivery"],
+         "phone": "(519) 555-7890",
+         "email": "info@blueberryblissfarm.ca",
+         "inventoryItems": [
+           { "name": "Organic Blueberries", "price": "$4.99/lb", "image": "images/blueberries-1.png" },
+           { "name": "Fresh Strawberries", "price": "$3.99/lb", "image": "images/blueberries-2.png" }
+         ]
+      },
+      "6": {
+         "title": "Berry Best Produce",
+         "service": "Local Fruit Supplier",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/blueberries-2.png",
+         "about": "Berry Best Produce is your trusted local supplier for fresh, handpicked fruit delivered directly from our farm to your home.",
+         "services": ["Daily Fruit Deliveries", "Seasonal Produce Boxes", "Farm-to-Table Partnerships"],
+         "phone": "(519) 555-2345",
+         "email": "contact@berrybestproduce.ca",
+         "inventoryItems": [
+           { "name": "Fresh Strawberries", "price": "$3.99/lb", "image": "images/blueberries-2.png" },
+           { "name": "Mixed Berries", "price": "$5.99/lb", "image": "images/blueberries-3.png" }
+         ]
+      },
+      "7": {
+         "title": "The Blueberry Basket",
+         "service": "Farm Fresh Produce",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/blueberries-3.png",
+         "about": "The Blueberry Basket delivers handpicked blueberries in a charming, market-style presentation with personalized service.",
+         "services": ["Handpicked Blueberry Sales", "Customized Produce Baskets", "Local Farmer’s Market Delivery"],
+         "phone": "(519) 555-3457",
+         "email": "orders@theblueberrybasket.ca",
+         "inventoryItems": [
+           { "name": "Mixed Berries", "price": "$5.99/lb", "image": "images/blueberries-3.png" }
+         ]
+      },
+      "8": {
+         "title": "Blue Haven Farms",
+         "service": "Organic Blueberries",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/blueberries-4.png",
+         "about": "At Blue Haven Farms, we pride ourselves on sustainable farming. Our organic blueberries are grown with care and delivered fresh.",
+         "services": ["Organic Blueberry Sales", "Farm Tours", "Local Produce Delivery"],
+         "phone": "(519) 555-4567",
+         "email": "info@bluehavenfarms.ca",
+         "inventoryItems": [
+           { "name": "Organic Blueberries", "price": "$4.99/lb", "image": "images/blueberries-4.png" }
+         ]
+      },
+      "9": {
+         "title": "Rapid Repair Co.",
+         "service": "Emergency Home Repairs",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/emergency-1.png",
+         "about": "Rapid Repair Co. provides fast, reliable emergency home repair services. We’re on call 24/7 to handle any repair emergency quickly and efficiently.",
+         "services": ["Emergency Plumbing & Electrical Repairs", "Structural & Appliance Repairs", "24/7 On-Call Service"],
+         "phone": "(519) 555-6789",
+         "email": "service@rapidrepairco.ca"
+      },
+      "10": {
+         "title": "Fix-It Fast",
+         "service": "On-Demand Repairs",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/emergency-2.png",
+         "about": "Fix-It Fast is known for its quick response and efficient repair solutions for your home and office.",
+         "services": ["General Home Repairs", "Electrical & Plumbing Fixes", "Appliance Repairs"],
+         "phone": "(519) 555-7891",
+         "email": "support@fixitfast.ca"
+      },
+      "11": {
+         "title": "Rescue Repairs",
+         "service": "24/7 Repair Services",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/emergency-3.png",
+         "about": "Rescue Repairs is available around the clock to provide repair services when you need them most.",
+         "services": ["24/7 Home Repairs", "Emergency Service Calls", "Rapid On-Site Repairs"],
+         "phone": "(519) 555-8901",
+         "email": "emergency@rescuerepairs.ca"
+      },
+      "12": {
+         "title": "JumpStart Pros",
+         "service": "Car Jump Starts",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/jumpstart-1.png",
+         "about": "JumpStart Pros provides reliable and quick car jump start services. We ensure your vehicle gets the energy it needs in a pinch.",
+         "services": ["On-Demand Car Jump Starts", "Roadside Assistance"],
+         "phone": "(519) 555-9012",
+         "email": "support@jumpstartpros.ca"
+      },
+      "13": {
+         "title": "Roadside Rescuers",
+         "service": "Emergency Roadside Assistance",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/jumpstart-2.png",
+         "about": "Roadside Rescuers provide prompt and professional assistance for your roadside emergencies.",
+         "services": ["Car Jump Starts", "Tire Changes", "Emergency Fuel Delivery"],
+         "phone": "(519) 555-9013",
+         "email": "help@roadrescuers.ca"
+      },
+      "14": {
+         "title": "GlobeTrotter Travel",
+         "service": "Travel Planning & Booking",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/travelagent-1.png",
+         "about": "GlobeTrotter Travel offers expert travel planning and booking services to create unforgettable travel experiences.",
+         "services": ["Custom Travel Itineraries", "Flight & Hotel Booking", "Travel Consultation"],
+         "phone": "(519) 555-0123",
+         "email": "info@globetrottertravel.ca"
+      },
+      "15": {
+         "title": "Voyage Ventures",
+         "service": "Customized Itineraries",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/travelagent-2.png",
+         "about": "Voyage Ventures specializes in crafting personalized travel itineraries tailored to your interests and budget.",
+         "services": ["Custom Itinerary Planning", "Travel Consultation", "Exclusive Deals"],
+         "phone": "(519) 555-0456",
+         "email": "hello@voyageventures.ca"
+      },
+      "16": {
+         "title": "LawWise Consulting",
+         "service": "Legal Advice & Consultation",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/legal-1.png",
+         "about": "LawWise Consulting offers professional legal advice and consultation services to help you navigate legal challenges.",
+         "services": ["Legal Consultation", "Contract Review", "Corporate Legal Services"],
+         "phone": "(519) 555-1122",
+         "email": "info@lawwiseconsulting.ca"
+      },
+      "17": {
+         "title": "Justice Junction",
+         "service": "On-Demand Legal Support",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/legal-2.png",
+         "about": "Justice Junction provides quick and accessible legal support for individuals and small businesses.",
+         "services": ["On-Demand Legal Advice", "Contract Review", "Dispute Resolution"],
+         "phone": "(519) 555-2233",
+         "email": "support@justicejunction.ca"
+      },
+      "18": {
+         "title": "Comfy Living",
+         "service": "Pre-owned Couches",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/couches-1.png",
+         "about": "Comfy Living offers quality pre-owned couches at affordable prices. Our selection is carefully curated to provide both style and comfort.",
+         "services": ["Pre-owned Couch Sales", "Home Delivery", "Furniture Consultation"],
+         "phone": "(519) 555-3344",
+         "email": "info@comfyliving.ca"
+      },
+      "19": {
+         "title": "Sofa Central",
+         "service": "Couch Sales & Delivery",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/couches-2.png",
+         "about": "Sofa Central is your one-stop shop for stylish, comfortable couches with hassle-free delivery.",
+         "services": ["New & Pre-owned Couch Sales", "Delivery & Setup", "Furniture Consultation"],
+         "phone": "(519) 555-4455",
+         "email": "info@sofacentral.ca"
+      },
+      "20": {
+         "title": "Luxe Loungers",
+         "service": "Designer Couches",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/couches-3.png",
+         "about": "Luxe Loungers offers high-end, designer couches for the discerning buyer. We combine elegance with comfort.",
+         "services": ["Designer Couch Sales", "Custom Upholstery", "White-Glove Delivery"],
+         "phone": "(519) 555-5566",
+         "email": "premium@luxeloungers.ca"
+      },
+      "21": {
+         "title": "Pool Pals",
+         "service": "Game Partner Matching",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/pool-1.png",
+         "about": "Pool Pals connects you with the perfect game partner for a fun and competitive pool match.",
+         "services": ["Game Partner Matching", "Pool Tournament Organizing", "Social Billiards Meetups"],
+         "phone": "(519) 555-6677",
+         "email": "play@poolpals.ca"
+      },
+      "22": {
+         "title": "Cue Crew",
+         "service": "Pool & Billiards Meetups",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/pool-2.png",
+         "about": "Cue Crew organizes casual and competitive pool meetups for enthusiasts.",
+         "services": ["Pool Meetup Scheduling", "Billiards Tournaments", "Social Gaming Events"],
+         "phone": "(519) 555-7788",
+         "email": "info@cuecrew.ca"
+      },
+      "23": {
+         "title": "Floral Finesse",
+         "service": "Flower Arrangements",
+         "location": "Kitchener, ON",
+         "rating": "★★★★★",
+         "image": "images/flowers-1.png",
+         "about": "Floral Finesse creates exquisite flower arrangements for every occasion.",
+         "services": ["Custom Bouquets", "Event Floral Design"],
+         "phone": "(519) 555-3345",
+         "email": "info@floralfinesse.ca",
+         "inventoryItems": [
+           { "name": "Rose Bouquet", "price": "$29.99", "image": "images/flowers-1.png" },
+           { "name": "Tulip Arrangement", "price": "$24.99", "image": "images/flowers-2.png" }
+         ]
+      },
+      "24": {
+         "title": "Garden Bloomers",
+         "service": "Garden & Bouquet Design",
+         "location": "Kitchener, ON",
+         "rating": "★★★★☆",
+         "image": "images/flowers-2.png",
+         "about": "Garden Bloomers specializes in designing beautiful gardens and bouquets that brighten your day.",
+         "services": ["Garden Design", "Bouquet Customization"],
+         "phone": "(519) 555-3346",
+         "email": "contact@gardenbloomers.ca",
+         "inventoryItems": [
+           { "name": "Seasonal Bouquet", "price": "$24.99", "image": "images/flowers-2.png" }
+         ]
       }
-      html += '<h3>Contact Information</h3>';
-      html += '<p>Phone: ' + data.phone + '</p>';
-      html += '<p>Email: ' + data.email + '</p>';
-      html += '</div>';
-      html += '<div class="message-form">';
-      html += '<h3>Send a Message</h3>';
-      html += '<form>';
-      html += '<input type="text" placeholder="Your Name" required>';
-      html += '<input type="email" placeholder="Your Email" required>';
-      html += '<textarea placeholder="Your Message" rows="5" required></textarea>';
-      html += '<button type="submit">Send Message</button>';
-      html += '</form>';
-      html += '</div>';
-      container.innerHTML = html;
-    }
+    };
     
     var id = getParameterByName("id");
     if (id && profiles[id]) {
       renderProfile(profiles[id]);
     } else {
       document.getElementById("profile-content").innerHTML = "<p>Profile not found.</p>";
+    }
+    
+    function renderProfile(data) {
+      var container = document.getElementById("profile-content");
+      var html = "";
+      html += '<div class="profile-header">';
+      html +=   '<img src="' + data.image + '" alt="' + data.title + '">';
+      html +=   '<h2>' + data.title + '</h2>';
+      html +=   '<p><strong>Service:</strong> ' + data.service + '</p>';
+      html +=   '<p><strong>Location:</strong> ' + data.location + '</p>';
+      html +=   '<p><strong>Rating:</strong> ' + data.rating + '</p>';
+      html += '</div>';
+      html += '<div class="profile-details">';
+      html +=   '<h3>About Us</h3>';
+      html +=   '<p>' + data.about + '</p>';
+      html +=   '<h3>Services Offered</h3>';
+      html +=   '<ul>';
+      data.services.forEach(function(item) {
+         html += '<li>' + item + '</li>';
+      });
+      html +=   '</ul>';
+      if(data.inventoryItems) {
+         html += '<h3>Inventory</h3>';
+         html += '<div class="inventory-list">';
+         data.inventoryItems.forEach(function(item) {
+           var itemId = getItemId(item.name);
+           html += '<a href="item.html?item=' + itemId + '" class="inventory-link" style="text-decoration: none;">';
+           html +=   '<div class="inventory-item">';
+           html +=     '<img src="' + item.image + '" alt="' + item.name + '">';
+           html +=     '<h4>' + item.name + '</h4>';
+           html +=     '<p><strong>Price:</strong> ' + item.price + '</p>';
+           html +=   '</div>';
+           html += '</a>';
+         });
+         html += '</div>';
+      }
+      html +=   '<h3>Contact Information</h3>';
+      html +=   '<p>Phone: ' + data.phone + '</p>';
+      html +=   '<p>Email: ' + data.email + '</p>';
+      html += '</div>';
+      html += '<div class="message-form">';
+      html +=   '<h3>Send a Message</h3>';
+      html +=   '<form>';
+      html +=     '<input type="text" placeholder="Your Name" required>';
+      html +=     '<input type="email" placeholder="Your Email" required>';
+      html +=     '<textarea placeholder="Your Message" rows="5" required></textarea>';
+      html +=     '<button type="submit">Send Message</button>';
+      html +=   '</form>';
+      html += '</div>';
+      container.innerHTML = html;
     }
   </script>
 </body>
