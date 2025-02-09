@@ -123,11 +123,44 @@
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
       });
       
-      // Dummy item data – in practice, you would load this dynamically
+      // FULL items object – include every mapped item
       var items = {
-        "101": { name: "Organic Blueberries", image: "images/blueberries-1.png", description: "Fresh, organic blueberries grown locally.", price: "$4.99/lb" },
-        "107": { name: "Rose Bouquet", image: "images/flowers-1.png", description: "A beautiful bouquet of roses.", price: "$29.99" }
-        // … add more items as needed …
+        "101": {
+          name: "Organic Blueberries",
+          image: "images/blueberries-1.png",
+          description: "Fresh, organic blueberries grown locally with sustainable practices.",
+          price: "$4.99/lb"
+        },
+        "102": {
+          name: "Fresh Strawberries",
+          image: "images/blueberries-2.png",
+          description: "Juicy, fresh strawberries picked at peak ripeness.",
+          price: "$3.99/lb"
+        },
+        "103": {
+          name: "Mixed Berries",
+          image: "images/mixberries.png",
+          description: "A mix of seasonal berries bursting with flavor.",
+          price: "$5.99/lb"
+        },
+        "107": {
+          name: "Rose Bouquet",
+          image: "images/flowers-1.png",
+          description: "A beautiful bouquet of fresh roses, perfect for any occasion.",
+          price: "$29.99"
+        },
+        "108": {
+          name: "Tulip Arrangement",
+          image: "images/flowers-2.png",
+          description: "A vibrant arrangement of tulips that adds color and charm.",
+          price: "$24.99"
+        },
+        "109": {
+          name: "Seasonal Bouquet",
+          image: "images/flowers-2.png",
+          description: "A bouquet featuring seasonal blooms to brighten your day.",
+          price: "$24.99"
+        }
       };
       
       function renderItem(itemData) {
@@ -146,7 +179,8 @@
         container.innerHTML = html;
       }
       
-      var itemId = new URLSearchParams(window.location.search).get("item");
+      var urlParams = new URLSearchParams(window.location.search);
+      var itemId = urlParams.get("item");
       if(itemId && items[itemId]) {
         renderItem(items[itemId]);
       } else {
