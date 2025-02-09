@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Looking – Spare Hands</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* === COMMON HEADER (exactly as in index) === */
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .header-left { flex: 1; }
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #40e0d0;
+      font-size: 32px;
+      cursor: pointer;
+    }
+    .logo { flex: 2; text-align: center; }
+    .logo img { height: 100px; }
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .header-buttons a {
+      text-decoration: none;
+      color: #002E5D;
+      background: #40e0d0;
+      border: 1px solid #40e0d0;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,46,93,0.95);
+      width: 150px;
+      position: absolute;
+      top: 130px;
+      left: 0;
+      border-radius: 5px;
+    }
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-top: 1px solid #004080;
+      color: #40e0d0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .dropdown-menu a:hover { background: #004080; }
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+      .header-buttons { flex-direction: column; align-items: flex-end; }
+    }
+
+    /* === PAGE STYLES FOR LOOKING POSTS === */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #002E5D;
+      text-align: center;
+    }
+    h1 { margin-top: 40px; }
+    .looking-section {
+      margin: 40px 0;
+    }
+    .looking-item {
+      background: #FFF;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .looking-item h3 {
+      margin: 0 0 10px;
+    }
+    .looking-item p {
+      margin: 5px 0;
+      color: #4A4A4A;
+    }
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      var toggle = document.querySelector(".menu-toggle");
+      var dropdown = document.querySelector(".dropdown-menu");
+      toggle.addEventListener("click", function(){
+        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+      });
+
+      var lookingPosts = [
+        { id: "1", type: "goods", title: "Looking for a used laptop", description: "I need a reliable used laptop for work, preferably a MacBook or similar.", location: "Kitchener, ON", contact: "laptopbuyer@example.com" },
+        { id: "2", type: "goods", title: "Wanted: Vintage Vinyl Records", description: "Searching for classic rock and jazz vinyl records in good condition.", location: "Kitchener, ON", contact: "vinylfan@example.com" },
+        { id: "3", type: "services", title: "Need a handyman", description: "Looking for a dependable handyman for home repairs and maintenance.", location: "Kitchener, ON", contact: "fixit@example.com" },
+        { id: "4", type: "services", title: "Seeking tutoring services", description: "I need tutoring for high school math. Someone experienced with algebra and geometry is preferred.", location: "Kitchener, ON", contact: "tutorseek@example.com" },
+        { id: "5", type: "goods", title: "Wanted: Gently used bicycle", description: "Looking for an affordable, gently used bicycle for daily commuting.", location: "Kitchener, ON", contact: "bikewanted@example.com" },
+        { id: "6", type: "services", title: "Looking for dog walking services", description: "I need a reliable person to walk my dog on a daily basis.", location: "Kitchener, ON", contact: "dogwalker@example.com" }
+      ];
+
+      function renderLookingPosts() {
+        var goodsContainer = document.getElementById("goods-posts");
+        var servicesContainer = document.getElementById("services-posts");
+        var goodsHTML = "";
+        var servicesHTML = "";
+
+        lookingPosts.forEach(function(post) {
+          var html = '<div class="looking-item">';
+          html += '<h3>' + post.title + '</h3>';
+          html += '<p>' + post.description + '</p>';
+          html += '<p><strong>Location:</strong> ' + post.location + '</p>';
+          html += '<p><strong>Contact:</strong> ' + post.contact + '</p>';
+          html += '</div>';
+          if(post.type === "goods") {
+            goodsHTML += html;
+          } else if(post.type === "services") {
+            servicesHTML += html;
+          }
+        });
+
+        goodsContainer.innerHTML = goodsHTML;
+        servicesContainer.innerHTML = servicesHTML;
+      }
+
+      renderLookingPosts();
+    });
+  </script>
+</head>
+<body>
+  <!-- COMMON HEADER (exactly as in your other pages) -->
+  <header>
+    <div class="header-container">
+      <div class="header-left">
+        <button class="menu-toggle">&#9776;</button>
+      </div>
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
+      </div>
+      <div class="header-right">
+        <div class="header-buttons">
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="looking.html">Looking</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Looking for Goods &amp; Services</h1>
+
+    <div class="looking-section">
+      <h2>Wanted Goods</h2>
+      <div id="goods-posts"></div>
+    </div>
+
+    <div class="looking-section">
+      <h2>Wanted Services</h2>
+      <div id="services-posts"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Spare Hands. All Rights Reserved.
+  </div>
+</body>
+</html>
