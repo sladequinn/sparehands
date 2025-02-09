@@ -6,7 +6,10 @@
   <title>Spare Hands – Home</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Header Styles (exactly as in index) --- */
+    /* Global removal of link underlines for our items */
+    a { text-decoration: none; }
+    
+    /* === COMMON HEADER (exactly as in index) === */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -20,9 +23,7 @@
       justify-content: space-between;
       position: relative;
     }
-    .header-left {
-      flex: 1;
-    }
+    .header-left { flex: 1; }
     .menu-toggle {
       background: none;
       border: none;
@@ -30,13 +31,8 @@
       font-size: 32px;
       cursor: pointer;
     }
-    .logo {
-      flex: 2;
-      text-align: center;
-    }
-    .logo img {
-      height: 100px;
-    }
+    .logo { flex: 2; text-align: center; }
+    .logo img { height: 100px; }
     .header-right {
       flex: 1;
       display: flex;
@@ -74,10 +70,16 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .dropdown-menu a:hover {
-      background: #004080;
+    .dropdown-menu a:hover { background: #004080; }
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+      .header-buttons { flex-direction: column; align-items: flex-end; }
     }
-    /* --- Page Styles --- */
+    
+    /* === PAGE STYLES === */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -95,28 +97,7 @@
       border: 1px solid #ddd;
       border-radius: 30px;
     }
-    .popular-searches {
-      background: #FFF;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    .popular-searches h2 {
-      color: #002E5D;
-    }
-    .popular-searches ul {
-      list-style: none;
-      padding: 0;
-    }
-    .popular-searches li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .popular-searches li:last-child {
-      border-bottom: none;
-    }
-    /* --- Updated Featured Sections using Marketplace Item Layout --- */
+    /* Featured Sections using marketplace item layout */
     .featured-section {
       margin-bottom: 40px;
     }
@@ -125,7 +106,6 @@
       text-align: center;
       margin-bottom: 20px;
     }
-    /* Use marketplace grid and inventory item styles */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -141,9 +121,7 @@
       border-bottom: 3px solid #002E5D;
       transition: transform 0.2s ease;
     }
-    .inventory-item:hover {
-      transform: translateY(-5px);
-    }
+    .inventory-item:hover { transform: translateY(-5px); }
     .inventory-item img {
       width: 100%;
       border-radius: 10px;
@@ -154,7 +132,11 @@
       font-size: 18px;
       color: #002E5D;
     }
-    /* --- Footer --- */
+    .inventory-item p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #4A4A4A;
+    }
     .footer {
       background: #002E5D;
       color: #FFF;
@@ -163,27 +145,32 @@
       font-size: 14px;
       margin-top: 40px;
     }
-    /* --- Mobile Overrides --- */
-    @media (max-width: 768px) {
-      .header-container { flex-wrap: wrap; }
-      .header-left { order: 1; }
-      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
-      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
-      .header-buttons { flex-direction: column; align-items: flex-end; }
+    
+    /* (Optional) If you’d like the home page search bar to redirect on Enter: */
+    .search-bar input:focus {
+      outline: none;
     }
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function(){
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
-      toggle.addEventListener("click", function() {
+      toggle.addEventListener("click", function(){
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+      });
+      
+      // (Optional) If you want the home page search bar to redirect to the search page:
+      var homeSearch = document.querySelector(".search-bar input");
+      homeSearch.addEventListener("keyup", function(e) {
+        if(e.key === "Enter" && homeSearch.value.trim() !== ""){
+          window.location.href = "search.html?q=" + encodeURIComponent(homeSearch.value.trim());
+        }
       });
     });
   </script>
 </head>
 <body>
-  <!-- COMMON HEADER -->
+  <!-- COMMON HEADER (exactly as in index) -->
   <header>
     <div class="header-container">
       <div class="header-left">
@@ -199,7 +186,6 @@
         </div>
       </div>
     </div>
-    <!-- Dropdown overlay menu -->
     <nav class="dropdown-menu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -208,39 +194,24 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-
-  <!-- Page Content -->
+  
+  <!-- HOME PAGE CONTENT -->
   <div class="container">
     <div class="search-bar">
       <input type="text" placeholder="Search for services, goods, or help...">
     </div>
-    <!-- Popular Searches Section -->
-    <div class="popular-searches">
-      <h2>POPULAR SEARCHES</h2>
-      <ul>
-        <li><a href="search.html?q=cleaning+dog+shit">I need help cleaning dog shit</a></li>
-        <li><a href="search.html?q=buy+blueberries">Buy blueberries</a></li>
-        <li><a href="search.html?q=emergency+repairs">I need emergency repairs</a></li>
-        <li><a href="search.html?q=jump+start+car">I need a jump start for my car</a></li>
-        <li><a href="search.html?q=travel+agent">Travel agent</a></li>
-        <li><a href="search.html?q=legal+advice">Legal advice</a></li>
-        <li><a href="search.html?q=couches+for+sale">Couches for sale</a></li>
-        <li><a href="search.html?q=need+a+fourth+for+a+game+of+pool">Need a fourth for a game of pool</a></li>
-        <li><a href="search.html?q=flowers">Flowers</a></li>
-      </ul>
-    </div>
-
-    <!-- Featured Services Section using marketplace layout -->
+    
+    <!-- Featured Services (using the marketplace item layout) -->
     <div class="featured-section">
-      <h2>FEATURED SERVICES</h2>
+      <h2>Featured Services</h2>
       <div class="grid-2">
-        <a href="profile.html?id=1">
+        <a href="profile.html?id=1" class="profile-link">
           <div class="inventory-item">
             <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
             <h3>Dirty Deeds Cleaning</h3>
           </div>
         </a>
-        <a href="profile.html?id=9">
+        <a href="profile.html?id=9" class="profile-link">
           <div class="inventory-item">
             <img src="images/emergency-1.png" alt="Rapid Repair Co.">
             <h3>Rapid Repair Co.</h3>
@@ -249,17 +220,17 @@
       </div>
     </div>
     
-    <!-- Featured Goods Section using marketplace layout -->
+    <!-- Featured Goods (using the marketplace item layout) -->
     <div class="featured-section">
-      <h2>FEATURED GOODS</h2>
+      <h2>Featured Goods</h2>
       <div class="grid-2">
-        <a href="item.html?item=101">
+        <a href="item.html?item=101" class="profile-link">
           <div class="inventory-item">
             <img src="images/blueberries-1.png" alt="Organic Blueberries">
             <h3>Organic Blueberries</h3>
           </div>
         </a>
-        <a href="item.html?item=107">
+        <a href="item.html?item=107" class="profile-link">
           <div class="inventory-item">
             <img src="images/flowers-1.png" alt="Rose Bouquet">
             <h3>Rose Bouquet</h3>
