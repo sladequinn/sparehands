@@ -6,7 +6,7 @@
   <title>Profile – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* === Header (exactly as in index) === */
+    /* === Header Styles (exactly as in index) === */
     header {
       background: #002E5D;
       padding: 15px 20px;
@@ -20,7 +20,10 @@
       justify-content: space-between;
       position: relative;
     }
-    .header-left { flex: 1; }
+    /* Left: Hamburger */
+    .header-left {
+      flex: 1;
+    }
     .menu-toggle {
       background: none;
       border: none;
@@ -28,8 +31,15 @@
       font-size: 32px;
       cursor: pointer;
     }
-    .logo { flex: 2; text-align: center; }
-    .logo img { height: 100px; }
+    /* Center: Logo */
+    .logo {
+      flex: 2;
+      text-align: center;
+    }
+    .logo img {
+      height: 100px;
+    }
+    /* Right: Login/Signup stacked vertically */
     .header-right {
       flex: 1;
       display: flex;
@@ -67,10 +77,15 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .dropdown-menu a:hover { background: #004080; }
-    
-    /* === Page Content === */
-    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    .dropdown-menu a:hover {
+      background: #004080;
+    }
+    /* === Page Content Styles === */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
     .profile-header {
       background: #FFF;
       padding: 30px;
@@ -98,15 +113,20 @@
       margin-bottom: 60px;
       text-align: left;
     }
-    .profile-details h3 { color: #002E5D; margin-top: 0; }
+    .profile-details h3 {
+      color: #002E5D;
+      margin-top: 0;
+    }
     .profile-details p,
     .profile-details ul {
       font-size: 14px;
       color: #4A4A4A;
       line-height: 1.6;
     }
-    .profile-details ul { list-style: disc inside; }
-    /* === Fixed Message Form === */
+    .profile-details ul {
+      list-style: disc inside;
+    }
+    /* Fixed Message Form Width */
     .message-form {
       margin-top: 30px;
       text-align: left;
@@ -139,8 +159,14 @@
       margin-top: 60px;
     }
     @media (max-width:768px) {
-      .header-container { flex-wrap: wrap; }
-      .header-left, .header-right { flex: 1 100%; text-align: center; }
+      .header-container {
+        flex-wrap: wrap;
+      }
+      .header-left,
+      .header-right {
+        flex: 1 100%;
+        text-align: center;
+      }
     }
   </style>
   <script>
@@ -154,7 +180,7 @@
   </script>
 </head>
 <body>
-  <!-- COMMON HEADER -->
+  <!-- COMMON HEADER (from index exactly) -->
   <header>
     <div class="header-container">
       <div class="header-left">
@@ -165,11 +191,12 @@
       </div>
       <div class="header-right">
         <div class="header-buttons">
-          <a href="login.html">Login</a>
-          <a href="signup.html">Sign Up</a>
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
         </div>
       </div>
     </div>
+    <!-- Dropdown overlay menu -->
     <nav class="dropdown-menu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -228,6 +255,13 @@
       "24": { "title": "Garden Bloomers", "service": "Garden & Bouquet Design", "location": "Kitchener, ON", "rating": "★★★★☆", "image": "images/flowers-2.png", "about": "Garden Bloomers specializes in designing beautiful gardens and bouquets that brighten your day.", "services": ["Garden Design", "Bouquet Customization"], "phone": "(519) 555-3346", "email": "contact@gardenbloomers.ca", "inventoryItems": [ { "name": "Seasonal Bouquet", "price": "$24.99", "image": "images/flowers-2.png" } ] }
     };
     
+    var id = getParameterByName("id");
+    if (id && profiles[id]) {
+      renderProfile(profiles[id]);
+    } else {
+      document.getElementById("profile-content").innerHTML = "<p>Profile not found.</p>";
+    }
+    
     function renderProfile(data) {
       var container = document.getElementById("profile-content");
       var html = "";
@@ -249,7 +283,7 @@
       html += '</ul>';
       if(data.inventoryItems) {
         html += '<h3>Inventory</h3>';
-        html += '<div class="inventory-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">';
+        html += '<div class="inventory-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">';
         data.inventoryItems.forEach(function(item) {
           html += '<div class="inventory-item" style="background: #FFF; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 15px; text-align: center; border-bottom: 3px solid #002E5D; transition: transform 0.2s ease;">';
           html += '<img src="' + item.image + '" alt="' + item.name + '" style="width:100%; border-radius:5px; margin-bottom: 10px;">';
@@ -275,11 +309,14 @@
       container.innerHTML = html;
     }
     
-    var id = getParameterByName("id");
-    if (id && profiles[id]) {
-      renderProfile(profiles[id]);
-    } else {
-      document.getElementById("profile-content").innerHTML = "<p>Profile not found.</p>";
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
   </script>
 </body>
