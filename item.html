@@ -6,20 +6,115 @@
   <title>Item Details – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* === NEW COMMON HEADER (exactly as in index) === */
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    /* Left: Hamburger */
+    .header-left {
+      flex: 1;
+    }
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #40e0d0;
+      font-size: 32px;
+      cursor: pointer;
+    }
+    /* Center: Logo */
+    .logo {
+      flex: 2;
+      text-align: center;
+    }
+    .logo img {
+      height: 100px;
+    }
+    /* Right: Login/Signup */
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .header-buttons a {
+      text-decoration: none;
+      color: #002E5D;
+      background: #40e0d0;
+      border: 1px solid #40e0d0;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,46,93,0.95);
+      width: 150px;
+      position: absolute;
+      top: 130px;
+      left: 0;
+      border-radius: 5px;
+    }
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-top: 1px solid #004080;
+      color: #40e0d0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .dropdown-menu a:hover {
+      background: #004080;
+    }
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+      .header-buttons { flex-direction: column; align-items: flex-end; }
+    }
+    
+    /* === ITEM PAGE STYLES === */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
     .item-details {
       background: #FFF;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin: 40px auto 60px;
+      margin-bottom: 60px;
     }
     .item-details img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 20px;
     }
-    .item-details h2 { color: #002E5D; margin-bottom: 10px; }
-    .item-details p { font-size: 14px; color: #4A4A4A; line-height: 1.6; }
+    .item-details h2 {
+      color: #002E5D;
+      margin-bottom: 10px;
+    }
+    .item-details p {
+      font-size: 14px;
+      color: #4A4A4A;
+      line-height: 1.6;
+    }
     .message-form {
       margin-top: 30px;
       text-align: left;
@@ -40,20 +135,131 @@
       border-radius: 20px;
       cursor: pointer;
     }
-    .footer { background: #002E5D; color: #FFF; padding: 20px; text-align: center; font-size: 14px; margin-top: 40px; }
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", function(){
+      // New header toggle for mobile
       var toggle = document.querySelector(".menu-toggle");
       var dropdown = document.querySelector(".dropdown-menu");
       toggle.addEventListener("click", function(){
         dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
       });
+      
+      // FULL items object. Replace/extend this object with your complete dataset.
+      var items = {
+        "101": {
+          id: "101",
+          name: "Organic Blueberries",
+          image: "images/blueberries-1.png",
+          description: "Fresh, organic blueberries grown locally using sustainable practices. Enjoy these delicious berries as a healthy snack or in your favorite recipes.",
+          price: "$4.99/lb"
+        },
+        "102": {
+          id: "102",
+          name: "Fresh Strawberries",
+          image: "images/strawberries.png",
+          description: "Juicy, ripe strawberries, freshly picked for optimal flavor. Perfect for smoothies, desserts, or as a fresh snack.",
+          price: "$3.99/lb"
+        },
+        "103": {
+          id: "103",
+          name: "Mixed Berries",
+          image: "images/mixberries.png",
+          description: "A delightful mix of seasonal berries bursting with flavor and perfect for a variety of culinary creations.",
+          price: "$5.99/lb"
+        },
+        "107": {
+          id: "107",
+          name: "Rose Bouquet",
+          image: "images/flowers-1.png",
+          description: "A stunning bouquet of fresh roses, artfully arranged to brighten any occasion.",
+          price: "$29.99"
+        },
+        "108": {
+          id: "108",
+          name: "Tulip Arrangement",
+          image: "images/flowers-2.png",
+          description: "A vibrant tulip arrangement, perfect for adding a splash of color to your home or office.",
+          price: "$24.99"
+        },
+        "109": {
+          id: "109",
+          name: "Seasonal Bouquet",
+          image: "images/flowers-2.png",
+          description: "A bouquet featuring an assortment of seasonal blooms, designed to capture the essence of each season.",
+          price: "$24.99"
+        }
+        // Add additional items as needed.
+      };
+      
+      function renderItem(itemData) {
+        var container = document.getElementById("item-content");
+        var html = "";
+        itemData.images.forEach(function(img) {
+          html += '<img src="' + img + '" alt="' + itemData.name + '">';
+        });
+        // Alternatively, if you want to show just the first image:
+        // html += '<img src="' + itemData.image + '" alt="' + itemData.name + '">';
+        html += '<h2>' + itemData.name + '</h2>';
+        html += '<p><strong>Provider:</strong> ' + itemData.provider + '</p>';
+        html += '<p><strong>Price:</strong> ' + itemData.price + '</p>';
+        html += '<p>' + itemData.description + '</p>';
+        // Optionally include a link to the provider's profile
+        html += '<p><a href="profile.html?id=' + getProfileId(itemData.provider) + '">View Provider Profile</a></p>';
+        html += '<div class="message-form">';
+        html += '<h3>Send a Message</h3>';
+        html += '<form>';
+        html += '<input type="text" placeholder="Your Name" required>';
+        html += '<input type="email" placeholder="Your Email" required>';
+        html += '<textarea placeholder="Your Message" rows="5" required></textarea>';
+        html += '<button type="submit">Send Message</button>';
+        html += '</form>';
+        html += '</div>';
+        container.innerHTML = html;
+      }
+      
+      // Helper to map a provider name to a profile id
+      function getProfileId(providerName) {
+        var mapping = {
+          "Blueberry Bliss Farm": "5",
+          "Berry Best Produce": "6",
+          "The Blueberry Basket": "7",
+          "Sofa Central": "19",
+          "Luxe Loungers": "20",
+          "Comfy Living": "18",
+          "Floral Finesse": "23",
+          "Garden Bloomers": "24"
+        };
+        return mapping[providerName] || "1";
+      }
+      
+      // Get the item ID from the query string.
+      var urlParams = new URLSearchParams(window.location.search);
+      var itemId = urlParams.get("item");
+      if(itemId && items[itemId]) {
+        // If your items use an "images" array, ensure to add one to your items.
+        // For this example, we'll transform the single image to an array.
+        var itemData = items[itemId];
+        if(!itemData.images) {
+          itemData.images = [itemData.image];
+        }
+        renderItem(itemData);
+      } else {
+        document.getElementById("item-content").innerHTML = "<p>Item not found.</p>";
+      }
     });
   </script>
 </head>
 <body>
-  <!-- COMMON HEADER (copy EXACTLY from index.html) -->
+  <!-- NEW HEADER (exactly as in index) -->
   <header>
     <div class="header-container">
       <div class="header-left">
@@ -86,82 +292,5 @@
   <div class="footer">
     &copy; 2025 Spare Hands. All Rights Reserved.
   </div>
-  
-  <script>
-    function getParameterByName(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\[\]]/g, '\\$&');
-      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-          results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-    
-    var inventoryItems = {
-      "101": { "name": "Organic Blueberries", "provider": "Blueberry Bliss Farm", "category": "Fruit", "price": "$4.99/lb", "images": ["images/blueberries-1.png"], "description": "Fresh organic blueberries grown with care." },
-      "102": { "name": "Fresh Strawberries", "provider": "Berry Best Produce", "category": "Fruit", "price": "$3.99/lb", "images": ["images/strawberries.png"], "description": "Juicy, handpicked strawberries." },
-      "103": { "name": "Mixed Berries", "provider": "The Blueberry Basket", "category": "Fruit", "price": "$5.99/lb", "images": ["images/mixberries.png"], "description": "A mix of the best berries." },
-      "104": { "name": "Modern Sofa", "provider": "Sofa Central", "category": "Furniture", "price": "$499", "images": ["images/marketcouches-2.png"], "description": "A stylish modern sofa that suits any living room." },
-      "105": { "name": "Designer Chair", "provider": "Luxe Loungers", "category": "Furniture", "price": "$299", "images": ["images/marketcouches-3.png"], "description": "A comfortable and chic designer chair." },
-      "106": { "name": "Vintage Coffee Table", "provider": "Comfy Living", "category": "Furniture", "price": "$199", "images": ["images/marketcouches-1.png"], "description": "A unique vintage coffee table." },
-      "107": { "name": "Rose Bouquet", "provider": "Floral Finesse", "category": "Flowers", "price": "$29.99", "images": ["images/flowers-1.png"], "description": "A beautiful bouquet of fresh roses." },
-      "108": { "name": "Tulip Arrangement", "provider": "Garden Bloomers", "category": "Flowers", "price": "$24.99", "images": ["images/flowers-2.png"], "description": "A vibrant arrangement of tulips." }
-    };
-    
-    function renderItem(data) {
-      var container = document.getElementById("item-content");
-      var html = "";
-      data.images.forEach(function(img) {
-        html += '<img src="' + img + '" alt="' + data.name + '">';
-      });
-      html += '<h2>' + data.name + '</h2>';
-      html += '<p><strong>Provider:</strong> ' + data.provider + '</p>';
-      html += '<p><strong>Price:</strong> ' + data.price + '</p>';
-      html += '<p>' + data.description + '</p>';
-      html += '<p><a href="profile.html?id=' + getProfileId(data.provider) + '">View Provider Profile</a></p>';
-      html += '<div class="message-form">';
-      html += '<h3>Send a Message</h3>';
-      html += '<form>';
-      html += '<input type="text" placeholder="Your Name" required>';
-      html += '<input type="email" placeholder="Your Email" required>';
-      html += '<textarea placeholder="Your Message" rows="5" required></textarea>';
-      html += '<button type="submit">Send Message</button>';
-      html += '</form>';
-      html += '</div>';
-      container.innerHTML = html;
-    }
-    
-    function getProfileId(providerName) {
-      var mapping = {
-        "Blueberry Bliss Farm": "5",
-        "Berry Best Produce": "6",
-        "The Blueberry Basket": "7",
-        "Sofa Central": "19",
-        "Luxe Loungers": "20",
-        "Comfy Living": "18",
-        "Floral Finesse": "23",
-        "Garden Bloomers": "24"
-      };
-      return mapping[providerName] || "1";
-    }
-    
-    var itemId = getParameterByName("item");
-    if (itemId && inventoryItems[itemId]) {
-      renderItem(inventoryItems[itemId]);
-    } else {
-      document.getElementById("item-content").innerHTML = "<p>Item not found.</p>";
-    }
-    
-    function getParameterByName(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\[\]]/g, '\\$&');
-      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-          results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-  </script>
 </body>
 </html>
