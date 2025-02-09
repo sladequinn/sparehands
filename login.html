@@ -6,6 +6,77 @@
   <title>Login – Spare Hands</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* --- COMMON HEADER STYLES (exactly as in index) --- */
+    header {
+      background: #002E5D;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .header-left { flex: 1; }
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #40e0d0;
+      font-size: 32px;
+      cursor: pointer;
+    }
+    .logo { flex: 2; text-align: center; }
+    .logo img { height: 100px; }
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .header-buttons a {
+      text-decoration: none;
+      color: #002E5D;
+      background: #40e0d0;
+      border: 1px solid #40e0d0;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,46,93,0.95);
+      width: 150px;
+      position: absolute;
+      top: 130px;
+      left: 0;
+      border-radius: 5px;
+    }
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-top: 1px solid #004080;
+      color: #40e0d0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .dropdown-menu a:hover { background: #004080; }
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+      .header-left { order: 1; }
+      .logo { order: 2; width: 100%; text-align: center; margin: 10px 0; }
+      .header-right { order: 3; width: 100%; display: flex; justify-content: flex-end; }
+      .header-buttons { flex-direction: column; align-items: flex-end; }
+    }
+    
+    /* --- Page Styles --- */
     .container {
       max-width: 400px;
       margin: 60px auto;
@@ -38,6 +109,14 @@
       cursor: pointer;
       font-size: 16px;
     }
+    .footer {
+      background: #002E5D;
+      color: #FFF;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 60px;
+    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -50,7 +129,7 @@
   </script>
 </head>
 <body>
-  <!-- COMMON HEADER -->
+  <!-- COMMON HEADER (exactly as in index) -->
   <header>
     <div class="header-container">
       <div class="header-left">
@@ -83,7 +162,9 @@
         <input type="password" placeholder="Password" required>
         <button type="submit">Login</button>
       </form>
-      <p style="text-align:center; margin-top:15px;">Don't have an account? <a href="signup.html">Sign Up</a></p>
+      <p style="text-align:center; margin-top:15px;">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+      </p>
     </div>
   </div>
   
