@@ -116,9 +116,16 @@
     .popular-searches li:last-child {
       border-bottom: none;
     }
-    .popular-searches li a {
-      text-decoration: none;
+    /* --- Updated Featured Sections using Marketplace Item Layout --- */
+    .featured-section {
+      margin-bottom: 40px;
     }
+    .featured-section h2 {
+      color: #002E5D;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Use marketplace grid and inventory item styles */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -147,9 +154,6 @@
       font-size: 18px;
       color: #002E5D;
     }
-    .featured-section a {
-      text-decoration: none;
-    }
     /* --- Footer --- */
     .footer {
       background: #002E5D;
@@ -159,6 +163,7 @@
       font-size: 14px;
       margin-top: 40px;
     }
+    /* --- Mobile Overrides --- */
     @media (max-width: 768px) {
       .header-container { flex-wrap: wrap; }
       .header-left { order: 1; }
@@ -167,5 +172,105 @@
       .header-buttons { flex-direction: column; align-items: flex-end; }
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var toggle = document.querySelector(".menu-toggle");
+      var dropdown = document.querySelector(".dropdown-menu");
+      toggle.addEventListener("click", function() {
+        dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+      });
+    });
+  </script>
 </head>
 <body>
+  <!-- COMMON HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="header-left">
+        <button class="menu-toggle">&#9776;</button>
+      </div>
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Spare Hands Logo"></a>
+      </div>
+      <div class="header-right">
+        <div class="header-buttons">
+          <a href="login.html" class="btn btn-login">Login</a>
+          <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <!-- Dropdown overlay menu -->
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search for services, goods, or help...">
+    </div>
+    <!-- Popular Searches Section -->
+    <div class="popular-searches">
+      <h2>POPULAR SEARCHES</h2>
+      <ul>
+        <li><a href="search.html?q=cleaning+dog+shit">I need help cleaning dog shit</a></li>
+        <li><a href="search.html?q=buy+blueberries">Buy blueberries</a></li>
+        <li><a href="search.html?q=emergency+repairs">I need emergency repairs</a></li>
+        <li><a href="search.html?q=jump+start+car">I need a jump start for my car</a></li>
+        <li><a href="search.html?q=travel+agent">Travel agent</a></li>
+        <li><a href="search.html?q=legal+advice">Legal advice</a></li>
+        <li><a href="search.html?q=couches+for+sale">Couches for sale</a></li>
+        <li><a href="search.html?q=need+a+fourth+for+a+game+of+pool">Need a fourth for a game of pool</a></li>
+        <li><a href="search.html?q=flowers">Flowers</a></li>
+      </ul>
+    </div>
+
+    <!-- Featured Services Section using marketplace layout -->
+    <div class="featured-section">
+      <h2>FEATURED SERVICES</h2>
+      <div class="grid-2">
+        <a href="profile.html?id=1">
+          <div class="inventory-item">
+            <img src="images/cleaning-1.png" alt="Dirty Deeds Cleaning">
+            <h3>Dirty Deeds Cleaning</h3>
+          </div>
+        </a>
+        <a href="profile.html?id=9">
+          <div class="inventory-item">
+            <img src="images/emergency-1.png" alt="Rapid Repair Co.">
+            <h3>Rapid Repair Co.</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Featured Goods Section using marketplace layout -->
+    <div class="featured-section">
+      <h2>FEATURED GOODS</h2>
+      <div class="grid-2">
+        <a href="item.html?item=101">
+          <div class="inventory-item">
+            <img src="images/blueberries-1.png" alt="Organic Blueberries">
+            <h3>Organic Blueberries</h3>
+          </div>
+        </a>
+        <a href="item.html?item=107">
+          <div class="inventory-item">
+            <img src="images/flowers-1.png" alt="Rose Bouquet">
+            <h3>Rose Bouquet</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    &copy; 2025 Spare Hands. All Rights Reserved.
+  </div>
+</body>
+</html>
